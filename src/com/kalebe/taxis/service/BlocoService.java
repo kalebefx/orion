@@ -35,15 +35,10 @@ public class BlocoService {
         }
 
         for(int i = 0; i < blocos.size();i++){
-        
-
-
+            if(blocos.get(i).getAcao().equalsIgnoreCase(acao)){
+                blocos.get(i).setAcao(novaAcao);
+            }
         }
-
-        
     }
-
-
-
     
 }

@@ -24,7 +24,6 @@ public class AtributoService {
             return;
         }
         this.atributos.removeIf(apelido -> apelido.getNome().equalsIgnoreCase(nome));
-
     }
 
 }
