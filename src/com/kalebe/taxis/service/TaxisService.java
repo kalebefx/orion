@@ -1,9 +1,12 @@
 package com.kalebe.taxis.service;
 
+import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 
 import com.kalebe.taxis.model.Atributo;
 import com.kalebe.taxis.model.Bloco;
+import com.kalebe.taxis.model.Habito;
 import com.kalebe.taxis.model.Semana;
 
 public class TaxisService {
@@ -58,13 +61,56 @@ public class TaxisService {
         return totalMinutos;
     }
 
-    // RF01
+    public String listarAtributos() {
+    StringBuilder sb = new StringBuilder();
+    for(Atributo a : atributoService.getAtributos()) {
+        sb.append("- " + a.getNome() + "\n");
+    }
+    return sb.toString();
+    }
+
+    public String listaHabito() {
+    StringBuilder sh = new StringBuilder();
+    for(Habito a : habitoService.getHabitos()) {
+        sh.append("- " + a.getNome() + "\n");
+    }
+    return sh.toString();
+    }
+
+    public void buscarAtributo(String nome){
+        for(Atributo a : atributoService.getAtributos()){
+        
+
+
+            
+        }
+    }
+
     public void cadastrarAtributo(String nome) {
     atributoService.cadastrarAtributo(nome);
-}
+    }
 
-// RF02
     public void excluirAtributo(String nome) {
     atributoService.excluirAtributo(nome);
-}
+    }
+
+    public void criarHabito(String nome){
+        habitoService.criarHabito(nome);
+    }
+    public void excluirHabito(String nome){
+        habitoService.excluirHabito(nome);
+    }
+    public  void criarBloco(String acao,LocalTime horasInicio,LocalTime horasFinal,String diaDaSemana){
+        blocoService.criarBloco(acao, horasInicio, horasFinal, diaDaSemana);
+    }
+    public void criarBloco(String acao,ArrayList<Atributo> atributo,Habito habito,LocalTime horasInicio,LocalTime horasFinal,String diaDaSemana, String descricao){
+        blocoService.criarBlocoCompleto(acao, atributo, habito, horasInicio, horasFinal, diaDaSemana, descricao);
+    }
+    public void excluirBloco(String acao){
+        blocoService.excluirBloco(acao);
+    }
+
+
+
+
 }
