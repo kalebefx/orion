@@ -57,4 +57,14 @@ public class TaxisService {
         }
         return totalMinutos;
     }
+
+    // RF01
+    public void cadastrarAtributo(String nome) {
+    atributoService.cadastrarAtributo(nome);
+}
+
+// RF02
+    public void excluirAtributo(String nome) {
+    atributoService.excluirAtributo(nome);
+}
 }
