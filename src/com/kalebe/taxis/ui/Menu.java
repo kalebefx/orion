@@ -1,7 +1,9 @@
 package com.kalebe.taxis.ui;
 
+import java.time.LocalTime;
 import java.util.Scanner;
 
+import com.kalebe.taxis.model.Atributo;
 import com.kalebe.taxis.service.TaxisService;
 
 public class Menu {
@@ -17,11 +19,17 @@ public class Menu {
         return this.taxisService;
     }
 
+    private void limparTela() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
     boolean rodando = true;
 
-
     public void exibirMenu() {
+
         while (rodando) {
+            limparTela();
             int escolha;
             System.out.println("""
                         1 : CRIAR ATRIBUTO
@@ -70,28 +78,49 @@ public class Menu {
                 case 5:
                     System.out.println("Digite o nome do novo bloco: ");
                     String nomeBloco = scanner.nextLine();
+                    System.out.println("Digite as hora de inicio: ");
+                    LocalTime horasInicio = LocalTime.parse(scanner.nextLine());
+                    System.out.println("Digite as hora do fim: ");
+                    LocalTime horasFinal = LocalTime.parse(scanner.nextLine());
+                    System.out.println("Digite o dia da semana: ");
+                    String diaDaSemana = scanner.nextLine();
+                    taxisService.criarBloco(nomeBloco, horasInicio, horasFinal, diaDaSemana);
                     break;
 
                 case 6:
+                    System.out.println(taxisService.visualizarSemana());
+                    System.out.println("Digite o nome do bloco para excluir: ");
+                    String exBloco = scanner.nextLine();
+                    taxisService.excluirBloco(exBloco);
+
                     break;
 
                 case 7:
+                    System.out.println(taxisService.visualizarSemana());
+                    System.out.println("Digite a ação do bloco que quer editar: ");
+                    String blocoAtual = scanner.nextLine();
+                    System.out.println("Digite o novo nome: ");
+                    String blocoNovo = scanner.nextLine();
+                    taxisService.editarBloco(blocoAtual, blocoNovo);
                     break;
-                    
+
                 case 8:
                     System.out.println(taxisService.visualizarSemana());
                     break;
 
                 case 9:
                     System.out.println(taxisService.listarAtributos());
-                    System.out.println("Digite o nome do atributo que quer ver o tempo: ");
+                    System.out.println("Digite o nome do atributo: ");
                     String verAtributo = scanner.nextLine();
+                    Atributo atributo = taxisService.buscarAtributo(verAtributo);
+                    System.out.println(taxisService.verTempoPorAtributo(atributo));
                     break;
 
                 case 10:
                     System.out.println("Encerrando programa...");
                     rodando = false;
                     break;
+
             }
 
         }
