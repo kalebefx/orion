@@ -1,21 +1,21 @@
-package com.kalebe.taxis.service;
+package com.kalebe.orion.service;
 
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
-import com.kalebe.taxis.model.Atributo;
-import com.kalebe.taxis.model.Bloco;
-import com.kalebe.taxis.model.Habito;
-import com.kalebe.taxis.model.Semana;
+import com.kalebe.orion.model.Atributo;
+import com.kalebe.orion.model.Bloco;
+import com.kalebe.orion.model.Habito;
+import com.kalebe.orion.model.Semana;
 
-public class TaxisService {
+public class OrionService {
     private AtributoService atributoService;
     private BlocoService blocoService;
     private HabitoService habitoService;
     private Semana semana;
 
-    public TaxisService() {
+    public OrionService() {
         this.atributoService = new AtributoService();
         this.blocoService = new BlocoService();
         this.habitoService = new HabitoService();

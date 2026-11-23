@@ -1,11 +1,11 @@
-package com.kalebe.taxis.service;
+package com.kalebe.orion.service;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-import com.kalebe.taxis.model.Atributo;
-import com.kalebe.taxis.model.Bloco;
-import com.kalebe.taxis.model.Habito;
+import com.kalebe.orion.model.Atributo;
+import com.kalebe.orion.model.Bloco;
+import com.kalebe.orion.model.Habito;
 
 public class BlocoService {
     private ArrayList<Bloco> blocos = new ArrayList<>();

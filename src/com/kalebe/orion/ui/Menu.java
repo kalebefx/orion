@@ -1,24 +1,24 @@
-package com.kalebe.taxis.ui;
+package com.kalebe.orion.ui;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.kalebe.taxis.model.Atributo;
-import com.kalebe.taxis.model.Habito;
-import com.kalebe.taxis.service.TaxisService;
+import com.kalebe.orion.model.Atributo;
+import com.kalebe.orion.model.Habito;
+import com.kalebe.orion.service.OrionService;
 
 public class Menu {
     private Scanner scanner = new Scanner(System.in);
-    private TaxisService taxisService;
+    private OrionService orionService;
 
-    public Menu(TaxisService taxisService) {
-        this.taxisService = taxisService;
+    public Menu(OrionService orionService) {
+        this.orionService = orionService;
         this.scanner = new Scanner(System.in);
     }
 
-    public TaxisService getTaxisService() {
-        return this.taxisService;
+    public OrionService getOrionService() {
+        return this.orionService;
     }
 
     private void limparTela() {
@@ -54,27 +54,27 @@ public class Menu {
                 case 1:
                     System.out.println("Digite o nome do atributo: ");
                     String nomeAtributo = scanner.nextLine();
-                    taxisService.cadastrarAtributo(nomeAtributo);
+                    orionService.cadastrarAtributo(nomeAtributo);
                     break;
 
                 case 2:
-                    System.out.println(taxisService.listarAtributos());
+                    System.out.println(orionService.listarAtributos());
                     System.out.println("Digite o nome do atributo que quer excluir: ");
                     String exAtributo = scanner.nextLine();
-                    taxisService.excluirAtributo(exAtributo);
+                    orionService.excluirAtributo(exAtributo);
                     break;
 
                 case 3:
                     System.out.println("Digite o nome do novo habito: ");
                     String nomeHabito = scanner.nextLine();
-                    taxisService.criarHabito(nomeHabito);
+                    orionService.criarHabito(nomeHabito);
                     break;
 
                 case 4:
-                    System.out.println(taxisService.listaHabito());
+                    System.out.println(orionService.listaHabito());
                     System.out.println("Digite o nome do habito para excluir: ");
                     String exHabito = scanner.nextLine();
-                    taxisService.excluirHabito(exHabito);
+                    orionService.excluirHabito(exHabito);
                     break;
 
                 case 5:
@@ -82,12 +82,12 @@ public class Menu {
                     String acao = scanner.nextLine();
                     System.out.println("Digite um atributo que queira adicionar: ");
                     String atributo = scanner.nextLine();
-                    Atributo atributoObj = taxisService.buscarAtributo(atributo);
+                    Atributo atributoObj = orionService.buscarAtributo(atributo);
                     ArrayList<Atributo> atributos = new ArrayList<>();
                     if(atributoObj != null) atributos.add(atributoObj);
                     System.out.println("Digite um habito que queira adicionar: ");
                     String habito = scanner.nextLine();
-                    Habito habitoObj = taxisService.buscarHabito(habito);
+                    Habito habitoObj = orionService.buscarHabito(habito);
                     System.out.println("Digite as hora de inicio: ");
                     LocalTime horasInicio = LocalTime.parse(scanner.nextLine());
                     System.out.println("Digite as hora do fim: ");
@@ -96,36 +96,36 @@ public class Menu {
                     String diaDaSemana = scanner.nextLine();
                     System.out.println("Digite algo na descrição: ");
                     String descricao = scanner.nextLine();
-                    taxisService.criarBlocoCompleto(acao, atributos, habitoObj, horasInicio, horasFinal, diaDaSemana, descricao);
+                    orionService.criarBlocoCompleto(acao, atributos, habitoObj, horasInicio, horasFinal, diaDaSemana, descricao);
                     break;
 
                 case 6:
-                    System.out.println(taxisService.visualizarSemana());
+                    System.out.println(orionService.visualizarSemana());
                     System.out.println("Digite o nome do bloco para excluir: ");
                     String exBloco = scanner.nextLine();
-                    taxisService.excluirBloco(exBloco);
+                    orionService.excluirBloco(exBloco);
 
                     break;
 
                 case 7:
-                    System.out.println(taxisService.visualizarSemana());
+                    System.out.println(orionService.visualizarSemana());
                     System.out.println("Digite a ação do bloco que quer editar: ");
                     String blocoAtual = scanner.nextLine();
                     System.out.println("Digite o novo nome: ");
                     String blocoNovo = scanner.nextLine();
-                    taxisService.editarBloco(blocoAtual, blocoNovo);
+                    orionService.editarBloco(blocoAtual, blocoNovo);
                     break;
 
                 case 8:
-                    System.out.println(taxisService.visualizarSemana());
+                    System.out.println(orionService.visualizarSemana());
                     break;
 
                 case 9:
-                    System.out.println(taxisService.listarAtributos());
+                    System.out.println(orionService.listarAtributos());
                     System.out.println("Digite o nome do atributo: ");
                     String verAtributo = scanner.nextLine();
-                    Atributo aatributo = taxisService.buscarAtributo(verAtributo);
-                    System.out.println(taxisService.verTempoPorAtributo(aatributo));
+                    Atributo aatributo = orionService.buscarAtributo(verAtributo);
+                    System.out.println(orionService.verTempoPorAtributo(aatributo));
                     break;
 
                 case 10:

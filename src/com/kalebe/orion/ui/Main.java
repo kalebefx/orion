@@ -1,11 +1,11 @@
-package com.kalebe.taxis.ui;
+package com.kalebe.orion.ui;
 
-import com.kalebe.taxis.service.TaxisService;
+import com.kalebe.orion.service.OrionService;
 
 public class Main {
 
     public static void main(String[] args) {
-        TaxisService service = new TaxisService();
+        OrionService service = new OrionService();
         Menu menu = new Menu(service);
         menu.exibirMenu();
     }

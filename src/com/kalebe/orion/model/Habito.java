@@ -1,4 +1,4 @@
-package com.kalebe.taxis.model;
+package com.kalebe.orion.model;
 
 public class Habito {
 
