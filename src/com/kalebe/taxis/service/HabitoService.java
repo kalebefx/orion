@@ -25,5 +25,4 @@ public class HabitoService {
         }
         this.habitos.removeIf(apelido -> apelido.getNome().equalsIgnoreCase(nome));
     }
-
 }

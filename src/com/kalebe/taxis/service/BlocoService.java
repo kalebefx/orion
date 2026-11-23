@@ -25,8 +25,7 @@ public class BlocoService {
     }
 
     public void criarBlocoCompleto(String acao, ArrayList<Atributo> atributo, Habito habito, LocalTime horasInicio,
-            LocalTime horasFinal, String diaDaSemana, String descricao) {
-        Bloco novoBloco = new Bloco(acao, atributo, habito, horasInicio, horasFinal, diaDaSemana, descricao);
+        LocalTime horasFinal, String diaDaSemana, String descricao) { Bloco novoBloco = new Bloco(acao, atributo, habito, horasInicio, horasFinal, diaDaSemana, descricao);
         this.blocos.add(novoBloco);
     }
 
@@ -48,5 +47,4 @@ public class BlocoService {
             }
         }
     }
-
 }

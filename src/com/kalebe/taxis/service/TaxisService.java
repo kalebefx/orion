@@ -30,16 +30,13 @@ public class TaxisService {
         StringBuilder sb = new StringBuilder();
 
         for (Bloco bloco : semana.getListaBlocos()) {
-
             sb.append("Dia: " + bloco.getDiaDaSemana() + "\n");
             sb.append("Ação: " + bloco.getAcao() + "\n");
             sb.append("Início: " + bloco.getHorasInicio() + "\n");
             sb.append("Fim: " + bloco.getHorasFinal() + "\n");
-
             if (bloco.getAtributo() != null) {
                 sb.append("Atributo: " + bloco.getAtributo() + "\n");
             }
-
             if (bloco.getHabito() != null) {
                 sb.append("Habito: " + bloco.getHabito() + "\n");
             }
@@ -86,6 +83,15 @@ public class TaxisService {
         return null;
     }
 
+    public Habito buscarHabito(String nome) {
+        for (Habito b : habitoService.getHabitos()) {
+            if (b.getNome().equalsIgnoreCase(nome)) {
+                return b;
+            }
+        }
+        return null;
+    }
+
     public void cadastrarAtributo(String nome) {
         atributoService.cadastrarAtributo(nome);
     }
@@ -104,11 +110,16 @@ public class TaxisService {
 
     public void criarBloco(String acao, LocalTime horasInicio, LocalTime horasFinal, String diaDaSemana) {
         blocoService.criarBloco(acao, horasInicio, horasFinal, diaDaSemana);
+        ArrayList<Bloco> blocos = blocoService.getBloco();
+        semana.getListaBlocos().add(blocos.get(blocos.size() - 1));
+
     }
 
-    public void criarBloco(String acao, ArrayList<Atributo> atributo, Habito habito, LocalTime horasInicio,
+    public void criarBlocoCompleto(String acao, ArrayList<Atributo> atributo, Habito habito, LocalTime horasInicio,
             LocalTime horasFinal, String diaDaSemana, String descricao) {
         blocoService.criarBlocoCompleto(acao, atributo, habito, horasInicio, horasFinal, diaDaSemana, descricao);
+        ArrayList<Bloco> blocos = blocoService.getBloco();
+        semana.getListaBlocos().add(blocos.get(blocos.size() - 1));
     }
 
     public void excluirBloco(String acao) {
@@ -118,5 +129,4 @@ public class TaxisService {
     public void editarBloco(String acao, String novaAcao) {
         blocoService.editarBloco(acao, novaAcao);
     }
-
 }

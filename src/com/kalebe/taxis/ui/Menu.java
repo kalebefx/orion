@@ -1,9 +1,11 @@
 package com.kalebe.taxis.ui;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.kalebe.taxis.model.Atributo;
+import com.kalebe.taxis.model.Habito;
 import com.kalebe.taxis.service.TaxisService;
 
 public class Menu {
@@ -76,15 +78,25 @@ public class Menu {
                     break;
 
                 case 5:
-                    System.out.println("Digite o nome do novo bloco: ");
-                    String nomeBloco = scanner.nextLine();
+                    System.out.println("Digite a nova ação: ");
+                    String acao = scanner.nextLine();
+                    System.out.println("Digite um atributo que queira adicionar: ");
+                    String atributo = scanner.nextLine();
+                    Atributo atributoObj = taxisService.buscarAtributo(atributo);
+                    ArrayList<Atributo> atributos = new ArrayList<>();
+                    if(atributoObj != null) atributos.add(atributoObj);
+                    System.out.println("Digite um habito que queira adicionar: ");
+                    String habito = scanner.nextLine();
+                    Habito habitoObj = taxisService.buscarHabito(habito);
                     System.out.println("Digite as hora de inicio: ");
                     LocalTime horasInicio = LocalTime.parse(scanner.nextLine());
                     System.out.println("Digite as hora do fim: ");
                     LocalTime horasFinal = LocalTime.parse(scanner.nextLine());
                     System.out.println("Digite o dia da semana: ");
                     String diaDaSemana = scanner.nextLine();
-                    taxisService.criarBloco(nomeBloco, horasInicio, horasFinal, diaDaSemana);
+                    System.out.println("Digite algo na descrição: ");
+                    String descricao = scanner.nextLine();
+                    taxisService.criarBlocoCompleto(acao, atributos, habitoObj, horasInicio, horasFinal, diaDaSemana, descricao);
                     break;
 
                 case 6:
@@ -112,8 +124,8 @@ public class Menu {
                     System.out.println(taxisService.listarAtributos());
                     System.out.println("Digite o nome do atributo: ");
                     String verAtributo = scanner.nextLine();
-                    Atributo atributo = taxisService.buscarAtributo(verAtributo);
-                    System.out.println(taxisService.verTempoPorAtributo(atributo));
+                    Atributo aatributo = taxisService.buscarAtributo(verAtributo);
+                    System.out.println(taxisService.verTempoPorAtributo(aatributo));
                     break;
 
                 case 10:
@@ -126,5 +138,5 @@ public class Menu {
         }
 
     }
-
+    
 }

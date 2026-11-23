@@ -12,8 +12,7 @@ public class Bloco {
     private String diaDaSemana;
     private String descricao;
 
-    public Bloco(String acao, ArrayList<Atributo> atributo, Habito habito, LocalTime horasInicio, LocalTime horasFinal,
-            String diaDaSemana, String descricao) {
+    public Bloco(String acao, ArrayList<Atributo> atributo, Habito habito, LocalTime horasInicio, LocalTime horasFinal, String diaDaSemana, String descricao) {
         this.acao = acao;
         this.atributo = atributo;
         this.habito = habito;
