@@ -153,8 +153,16 @@ Ficam de fora até serem especificados à parte: painel administrativo, comparti
 | Requisitos não funcionais | 11 (RNF01–RNF11) |
 | Total | 60 |
 
-## 7. Histórico
+## 7. Diagramas
+
+| Diagrama | Onde está | Situação |
+| --- | --- | --- |
+| Fluxo do produto | [diagrama-de-fluxo.md](diagramas/diagrama-de-fluxo.md) | Desenhado a partir desta lista de requisitos |
+| Classes | [diagrama-de-classes.md](diagramas/diagrama-de-classes.md) | Desenho do draw.io desatualizado; a correção é manual |
+
+## 8. Histórico
 
 | Versão | Data | Alteração |
 | --- | --- | --- |
 | 0.1 | 2026-11-23 | Registro inicial da lista completa de requisitos funcionais e não funcionais. |
+| 0.1 | 2026-11-23 | Ligação com o diagrama de fluxo e com o diagrama de classes. |
