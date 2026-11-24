@@ -1,18 +1,33 @@
 # Diagrama de classes
 
-Relação entre Semana, Bloco, Atributo e Hábito. O desenho abaixo é o arquivo do draw.io e está desatualizado. A atualização do diagrama fica manual.
+Modelo do Orion alinhado aos [requisitos](../requisitos.md): usuário, semana, bloco, atributo, hábito, hobby e caderno. A imagem é a exportação do draw.io.
 
 ![Diagrama de classes do Orion](diagrama-de-classes.png)
 
-## O que o desenho não acompanha
+## Classes
 
-Em relação às classes Java atuais:
+| Classe | Atributos |
+| --- | --- |
+| Usuario | nome, email, senha, foto |
+| Semana | listaBlocos |
+| Bloco | acao, atributos, horaInicio, horaFim, diaSemana, descricao, recorrente |
+| Atributo | nome, cor |
+| Habito | nome, ativo |
+| Hobby | nome, ativo |
+| Caderno | divisorias |
+| Divisoria | nome, notas |
+| Nota | titulo, conteudo, dataCriacao |
 
-- Em `Bloco`, o fim do intervalo se chama `horasFinal`. No desenho está `horaFim`.
-- Em `Bloco`, o dia é `String diaDaSemana`. No desenho está `enum DiaSemana`, e esse enum não existe no código.
-- Em `Bloco`, a lista se chama `atributo`. No desenho está `atributos`.
-- Em `Semana`, o campo é `listaBlocos`, do tipo `ArrayList<Bloco>`. No desenho está `ListaBlocos: List<bloco>`.
-- `Habito` tem o campo `atributo`, como no desenho, mas o menu só pede o nome e grava o hábito sem atributo.
-- `Bloco` não guarda a semana. A lista de blocos vive só em `Semana`.
+`DiaSemana` é uma enumeração: segunda, terça, quarta, quinta, sexta, sábado e domingo.
 
-Em relação aos [requisitos](../requisitos.md), o desenho cobre só o núcleo do console. Ficam de fora usuário e sessão, hobby, caderno (divisória e nota), perfil (foto, metas, início da semana, aparência, fuso e lembretes) e o estado ativo ou inativo de hábito e hobby. `Semana` também não identifica qual semana é.
+## Relações
+
+- Um usuário possui vários hobbies, vários hábitos, um ou mais atributos e um ou mais cadernos.
+- Um usuário possui uma semana. A semana organiza os blocos.
+- Um bloco referencia no máximo um hábito e usa atributos.
+- Hábito e hobby se vinculam a atributos.
+- Um caderno contém uma ou mais divisórias. Cada divisória contém as suas notas.
+
+O dashboard não é classe. Tempo total, tempo por atributo e consistência são contas em cima dos blocos.
+
+Meta semanal, início da semana, aparência, fuso horário e lembretes estão nos requisitos de perfil e ainda não aparecem neste desenho.
