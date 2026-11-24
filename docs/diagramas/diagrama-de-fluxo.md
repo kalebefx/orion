@@ -1,8 +1,6 @@
 # Diagrama de fluxo
 
-Fluxo do produto descrito em [requisitos.md](../requisitos.md). Cada pessoa autenticada só percorre o próprio conjunto de dados.
-
-O menu de console que existe hoje cobre só um trecho deste fluxo: criar e excluir atributo, criar e excluir hábito, criar, editar, excluir e ver bloco, e ver o tempo de um atributo. Não há login, dashboard, hobby, caderno nem perfil.
+Fluxo do produto descrito em [requisitos.md](../requisitos.md) e nas telas da [documentação inicial](../documentacao-inicial.md). Cada pessoa autenticada só percorre o próprio conjunto de dados.
 
 ```mermaid
 flowchart TD
@@ -22,9 +20,12 @@ flowchart TD
 
   semana --> semanaAcoes[Criar, editar, excluir ou arrastar bloco]
   semana --> semanaVista[Trocar a semana e filtrar por atributo ou hábito]
+  semana --> detalheBloco[Abrir o modal de detalhes do bloco]
   dashboard --> mes[Trocar o mês]
   mes --> stats[Tempo total, tempo por atributo e consistência]
+  stats --> detalheAtributo[Histórico de horas do atributo por semana]
   atributos --> atributosAcoes[Adicionar, editar ou excluir atributo]
+  atributos --> detalheAtributo
   habitos --> habitosAcoes[Adicionar, editar, excluir, ativar ou desativar hábito]
   hobby --> hobbyAcoes[Adicionar, editar, excluir, ativar ou desativar hobby]
   caderno --> cadernoNav[Abrir o caderno e navegar nas divisórias]
@@ -34,11 +35,15 @@ flowchart TD
   perfilPrefs --> perfilSalvar[Salvar o perfil]
 ```
 
+A aba de IA não entra neste fluxo. Ela ainda não tem requisito funcional.
+
 | Trecho | Requisitos |
 | --- | --- |
 | Entrada e sessão | RF01–RF05 |
 | Minha Semana | RF06–RF12 |
+| Modal de detalhes do bloco | RF06–RF09 |
 | Dashboard | RF13–RF16 |
+| Histórico do atributo | RF16, RF44 |
 | Atributos | RF17–RF20 |
 | Hábitos | RF21–RF26 |
 | Hobby | RF27–RF32 |

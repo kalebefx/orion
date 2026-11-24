@@ -23,13 +23,13 @@ Objetivo: documentar, prototipar e diagramar antes de codar.
 
 ### Semana 3 — 23/11 → 29/11
 
-- Protótipo no Figma (telas principais)
-- Requisitos funcionais e não funcionais
-- Diagrama de classes no draw.io
+- Protótipo no Figma (telas principais) ✔️
+- Requisitos funcionais e não funcionais ✔️
+- Diagrama de classes no draw.io — desenho base feito; faltam os ajustes da lista de engenharia
 
 ### Semana 4 — 30/11 → 06/12
 
-- Diagrama de fluxo no draw.io
+- Diagrama de fluxo ✔️
 - Configurar Trello com as sprints
 - Retrospectiva do mês 1
 

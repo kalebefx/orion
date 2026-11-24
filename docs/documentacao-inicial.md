@@ -6,7 +6,7 @@ Documento de entrada do projeto. Ele descreve o produto, a forma de trabalhar e 
 | --- | --- |
 | Projeto | Orion |
 | Documento | Documentação inicial |
-| Versão | 0.2 |
+| Versão | 0.3 |
 | Status | Em uso |
 | Atualizado em | 2026-11-23 |
 
@@ -18,7 +18,7 @@ Documento de entrada do projeto. Ele descreve o produto, a forma de trabalhar e 
 | [Tech Stack](tech-stack.md) | Ferramentas escolhidas e o motivo de cada uma |
 | [Cronograma](cronograma.md) | 16 sprints, de 09/11/2026 a 08/03/2027 |
 | [Diagrama de fluxo](diagramas/diagrama-de-fluxo.md) | Caminho do usuário autenticado pelas abas |
-| [Diagrama de classes](diagramas/diagrama-de-classes.md) | Modelo de domínio. O desenho atual ainda não acompanha os requisitos |
+| [Diagrama de classes](diagramas/diagrama-de-classes.md) | Modelo de domínio. O draw.io tem o núcleo; ainda faltam semana identificada, meta e preferências de perfil |
 | [Aprendizados](aprendizados.md) | Diário do que foi estudado no código exploratório |
 
 ## Regra de engenharia
@@ -139,11 +139,11 @@ Data de referência: 23/11/2026. Semana 3 de 16. Fase atual: Engenharia.
 | Console em Java | Ensaio de aprendizado. Não é a base do produto |
 | Protótipo no Figma | Feito |
 | Requisitos funcionais e não funcionais | Feito, versão 0.1, 49 RF e 11 RNF |
-| Diagrama de fluxo | Feito, alinhado aos requisitos |
-| Cronograma de 4 meses | Feito |
+| Diagrama de fluxo | Feito. Inclui modal do bloco e histórico de horas do atributo |
+| Cronograma de 4 meses | Feito. Semanas 1 e 2 fechadas. Na semana 3 faltam os ajustes do diagrama de classes |
 | Diário de aprendizados | Em uso |
 | Documentação inicial | Esta versão |
-| Diagrama de classes no draw.io | Pendente. O desenho atual descreve o console e não cobre usuário, hobby, caderno, perfil nem metas |
+| Diagrama de classes no draw.io | Base feita: usuário, semana, bloco, atributo, hábito, hobby, caderno, divisória e nota. Ajustes ainda no draw.io |
 | Trello com as sprints | Pendente (semana 4) |
 | Retrospectiva do mês 1 | Pendente (semana 4) |
 | README do repositório | Ainda é o texto padrão do Java no VS Code. A versão com o projeto entra na fase de finalização |
@@ -152,7 +152,7 @@ Data de referência: 23/11/2026. Semana 3 de 16. Fase atual: Engenharia.
 
 A fase 2 começa em 07/12/2026. Até lá, a engenharia que ainda falta é esta:
 
-1. Redesenhar o diagrama de classes a partir dos requisitos e do protótipo. Classes mínimas da visão atual: usuário, atributo, hábito, hobby, bloco, semana, meta, divisória e nota.
+1. Ajustar o diagrama de classes no draw.io. O núcleo já está desenhado. Falta: várias semanas com data de início e fim, meta semanal no atributo, preferências de perfil no usuário, um atributo por bloco, um atributo por hábito e por hobby, e um caderno por usuário.
 2. Escrever as regras de negócio que os requisitos ainda não detalham: campos obrigatórios, conflito de horário, cálculo de consistência, o que acontece ao excluir um atributo que já tem hábitos ou blocos, e se bloco recorrente entra nesta entrega.
 3. Decidir a aba de IA: casca vazia nesta versão ou fora do escopo.
 4. Marcar no cronograma o que é entrega de 08/03 e o que é backlog. Os requisitos descrevem o produto inteiro. As sprints 5 a 14, como estão hoje, cobrem atributo, hábito, bloco e semana. Autenticação, hobby, caderno, dashboard e perfil precisam de um corte explícito: entram no prazo ou ficam para depois.
@@ -165,3 +165,4 @@ Sem o diagrama de classes alinhado e sem esse corte de escopo, migrar o console 
 | Versão | Data | Alteração |
 | --- | --- | --- |
 | 0.2 | 2026-11-23 | Documento completo: produto, metodologia, stack, status da semana 3 e pendências antes do back-end. |
+| 0.3 | 2026-11-23 | Status do fluxo, do cronograma e do diagrama de classes alinhado ao que já foi feito. |
