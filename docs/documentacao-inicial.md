@@ -6,9 +6,9 @@ Documento de entrada do projeto. Ele descreve o produto, a forma de trabalhar e 
 | --- | --- |
 | Projeto | Orion |
 | Documento | Documentação inicial |
-| Versão | 0.3 |
+| Versão | 0.4 |
 | Status | Em uso |
-| Atualizado em | 2026-11-23 |
+| Atualizado em | 2026-11-24 |
 
 ## Documentos do projeto
 
@@ -18,7 +18,7 @@ Documento de entrada do projeto. Ele descreve o produto, a forma de trabalhar e 
 | [Tech Stack](tech-stack.md) | Ferramentas escolhidas e o motivo de cada uma |
 | [Cronograma](cronograma.md) | 16 sprints, de 09/11/2026 a 08/03/2027 |
 | [Diagrama de fluxo](diagramas/diagrama-de-fluxo.md) | Caminho do usuário autenticado pelas abas |
-| [Diagrama de classes](diagramas/diagrama-de-classes.md) | Modelo de domínio. O draw.io tem o núcleo; ainda faltam semana identificada, meta e preferências de perfil |
+| [Diagrama de classes](diagramas/diagrama-de-classes.md) | Modelo de domínio alinhado ao draw.io |
 | [Aprendizados](aprendizados.md) | Diário do que foi estudado no código exploratório |
 
 ## Regra de engenharia
@@ -63,7 +63,7 @@ Ficam de fora desta versão, até serem especificados à parte: painel administr
 - Trocar a semana exibida (RF10).
 - Realocar bloco arrastando para outro dia ou horário (RF11).
 - Filtrar a visualização por atributo e por hábito (RF12).
-- Bloco recorrente, que reaparece toda semana, está na visão do produto e ainda não tem requisito próprio.
+- Bloco recorrente ficou de fora desta versão. Não está no diagrama de classes e ainda não tem requisito.
 - Modal de detalhes ao clicar num bloco está na visão do produto, como complemento de RF06–RF09.
 
 ### Tempo e metas
@@ -130,7 +130,7 @@ Decisões e motivos em [Tech Stack](tech-stack.md).
 
 ## Status atual
 
-Data de referência: 23/11/2026. Semana 3 de 16. Fase atual: Engenharia.
+Data de referência: 24/11/2026. Semana 3 de 16. Fase atual: Engenharia.
 
 | Entrega | Situação |
 | --- | --- |
@@ -140,10 +140,10 @@ Data de referência: 23/11/2026. Semana 3 de 16. Fase atual: Engenharia.
 | Protótipo no Figma | Feito |
 | Requisitos funcionais e não funcionais | Feito, versão 0.1, 49 RF e 11 RNF |
 | Diagrama de fluxo | Feito. Inclui modal do bloco e histórico de horas do atributo |
-| Cronograma de 4 meses | Feito. Semanas 1 e 2 fechadas. Na semana 3 faltam os ajustes do diagrama de classes |
+| Cronograma de 4 meses | Feito. Semanas 1 a 3 fechadas no que é engenharia de produto |
 | Diário de aprendizados | Em uso |
 | Documentação inicial | Esta versão |
-| Diagrama de classes no draw.io | Base feita: usuário, semana, bloco, atributo, hábito, hobby, caderno, divisória e nota. Ajustes ainda no draw.io |
+| Diagrama de classes no draw.io | Feito. Várias semanas com data, meta no atributo, perfil no usuário, bloco com zero ou mais atributos |
 | Trello com as sprints | Pendente (semana 4) |
 | Retrospectiva do mês 1 | Pendente (semana 4) |
 | README do repositório | Ainda é o texto padrão do Java no VS Code. A versão com o projeto entra na fase de finalização |
@@ -152,13 +152,12 @@ Data de referência: 23/11/2026. Semana 3 de 16. Fase atual: Engenharia.
 
 A fase 2 começa em 07/12/2026. Até lá, a engenharia que ainda falta é esta:
 
-1. Ajustar o diagrama de classes no draw.io. O núcleo já está desenhado. Falta: várias semanas com data de início e fim, meta semanal no atributo, preferências de perfil no usuário, um atributo por bloco, um atributo por hábito e por hobby, e um caderno por usuário.
-2. Escrever as regras de negócio que os requisitos ainda não detalham: campos obrigatórios, conflito de horário, cálculo de consistência, o que acontece ao excluir um atributo que já tem hábitos ou blocos, e se bloco recorrente entra nesta entrega.
-3. Decidir a aba de IA: casca vazia nesta versão ou fora do escopo.
-4. Marcar no cronograma o que é entrega de 08/03 e o que é backlog. Os requisitos descrevem o produto inteiro. As sprints 5 a 14, como estão hoje, cobrem atributo, hábito, bloco e semana. Autenticação, hobby, caderno, dashboard e perfil precisam de um corte explícito: entram no prazo ou ficam para depois.
-5. Montar o Trello com as sprints e fechar a retrospectiva do mês 1.
+1. Escrever as regras de negócio que os requisitos ainda não detalham: campos obrigatórios, conflito de horário, cálculo de consistência e o que acontece ao excluir um atributo que já tem hábitos ou blocos. O diagrama já fixa três regras: o bloco pode ter zero ou mais atributos, a hora inteira conta para cada um deles, e bloco recorrente ficou de fora desta versão.
+2. Decidir a aba de IA: casca vazia nesta versão ou fora do escopo.
+3. Marcar no cronograma o que é entrega de 08/03 e o que é backlog. Os requisitos descrevem o produto inteiro. As sprints 5 a 14, como estão hoje, cobrem atributo, hábito, bloco e semana. Autenticação, hobby, caderno, dashboard e perfil precisam de um corte explícito: entram no prazo ou ficam para depois.
+4. Montar o Trello com as sprints e fechar a retrospectiva do mês 1.
 
-Sem o diagrama de classes alinhado e sem esse corte de escopo, migrar o console para Spring Boot repete o problema de codar antes de arquitetar.
+O diagrama de classes está alinhado. Sem as regras de negócio e sem esse corte de escopo, migrar o console para Spring Boot ainda começa cedo demais.
 
 ## Histórico
 
@@ -166,3 +165,4 @@ Sem o diagrama de classes alinhado e sem esse corte de escopo, migrar o console 
 | --- | --- | --- |
 | 0.2 | 2026-11-23 | Documento completo: produto, metodologia, stack, status da semana 3 e pendências antes do back-end. |
 | 0.3 | 2026-11-23 | Status do fluxo, do cronograma e do diagrama de classes alinhado ao que já foi feito. |
+| 0.4 | 2026-11-24 | Diagrama de classes fechado: semanas com data, meta, perfil e bloco com zero ou mais atributos. |

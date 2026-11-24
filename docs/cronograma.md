@@ -25,7 +25,7 @@ Objetivo: documentar, prototipar e diagramar antes de codar.
 
 - Protótipo no Figma (telas principais) ✔️
 - Requisitos funcionais e não funcionais ✔️
-- Diagrama de classes no draw.io — desenho base feito; faltam os ajustes da lista de engenharia
+- Diagrama de classes no draw.io ✔️
 
 ### Semana 4 — 30/11 → 06/12
 

@@ -158,7 +158,7 @@ Ficam de fora até serem especificados à parte: painel administrativo, comparti
 | Diagrama | Onde está | Situação |
 | --- | --- | --- |
 | Fluxo do produto | [diagrama-de-fluxo.md](diagramas/diagrama-de-fluxo.md) | Alinhado aos requisitos, com modal do bloco e histórico do atributo |
-| Classes | [diagrama-de-classes.md](diagramas/diagrama-de-classes.md) | Desenho base no draw.io; ajustes de semana, meta, perfil e cardinalidade ainda são manuais |
+| Classes | [diagrama-de-classes.md](diagramas/diagrama-de-classes.md) | Alinhado ao draw.io: várias semanas com data, meta no atributo, perfil no usuário, bloco com zero ou mais atributos |
 
 ## 8. Histórico
 
@@ -167,3 +167,4 @@ Ficam de fora até serem especificados à parte: painel administrativo, comparti
 | 0.1 | 2026-11-23 | Registro inicial da lista completa de requisitos funcionais e não funcionais. |
 | 0.1 | 2026-11-23 | Ligação com o diagrama de fluxo e com o diagrama de classes. |
 | 0.1 | 2026-11-23 | Situação dos diagramas: fluxo com modal do bloco e histórico do atributo; classes com ajustes manuais pendentes. |
+| 0.1 | 2026-11-24 | Diagrama de classes alinhado: semanas com data, meta, perfil e bloco com zero ou mais atributos. |
