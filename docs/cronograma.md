@@ -55,8 +55,8 @@ Princípios do plano:
 
 ### S04 — 30/11 → 06/12
 
-- Validar as [regras de negócio](regras-de-negocio.md) ✔️ (24/11, exceto a RN37)
-- Validar o [modelo de dados](diagramas/modelo-de-dados.md) e o [contrato da API](api.md)
+- Validar as [regras de negócio](regras-de-negocio.md) ✔️ (24/11)
+- Validar o [modelo de dados](diagramas/modelo-de-dados.md) e o [contrato da API](api.md) ✔️ (25/11)
 - Validar prioridades e corte por sprint nos [requisitos](requisitos.md)
 - Adotar o [processo](processo.md): DoR, DoD, fluxo Git, Conventional Commits
 - Repositório limpo: `.gitignore`, `bin/` fora do Git, README mínimo

@@ -2,7 +2,7 @@
 
 Primeira versão do contrato. Ele é definido antes do código, para que back e front sigam o mesmo combinado. Depois da S05, a referência viva passa a ser o Swagger (`/swagger-ui.html`), e este arquivo é atualizado junto com ele.
 
-Status: **proposta alinhada ao diagrama de classes v2, validar na S04**.
+Status: **validado em 25/11/2026**.
 
 ## Convenções
 

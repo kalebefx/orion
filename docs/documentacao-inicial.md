@@ -140,7 +140,7 @@ Data de referência: 24/11/2026. Sprint S03. Fase atual: Engenharia.
 | Trello com as sprints | Feito, no fluxo de Product Backlog e Sprint Backlog |
 | Cronograma | Versão 2.0, com 17 sprints até a release |
 | Regras de negócio | Validadas em 24/11 (RN01–RN37) |
-| Modelo de dados e contrato da API | Proposta escrita. Validar na S04 |
+| Modelo de dados e contrato da API | Validados em 25/11 |
 | Processo (DoR, DoD, Git, CI/CD) | Escrito. Adotar a partir da S05 |
 | Retrospectiva do mês 1 | Pendente (S04) |
 | README do repositório | Versão mínima. A versão completa, com prints, entra na S15 |
@@ -149,9 +149,8 @@ Data de referência: 24/11/2026. Sprint S03. Fase atual: Engenharia.
 
 A S05 começa em 07/12/2026. Até lá, na S04:
 
-1. Validar o [modelo de dados](diagramas/modelo-de-dados.md) e o [contrato da API](api.md).
-2. Instalar o ambiente: JDK 21, Docker Desktop, IDE, Node.js LTS e Postman.
-3. Fazer a retrospectiva do mês 1.
+1. Instalar o ambiente: JDK 21, Docker Desktop, IDE, Node.js LTS e Postman.
+2. Fazer a retrospectiva do mês 1.
 
 ## Histórico
 

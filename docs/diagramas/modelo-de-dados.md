@@ -2,7 +2,7 @@
 
 Tradução do [diagrama de classes](diagrama-de-classes.md) v2 para tabelas do PostgreSQL. É a base das migrations do Flyway (`backend/src/main/resources/db/migration`). Quando este modelo mudar, uma migration nova é criada. Migrations já aplicadas nunca são editadas.
 
-Status: **proposta derivada do diagrama v2, validar na S04**.
+Status: **validado em 25/11/2026**.
 
 ```mermaid
 erDiagram
