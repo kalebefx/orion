@@ -1,0 +1,25 @@
+# Build Java
+bin/
+target/
+*.class
+
+# Front-end
+node_modules/
+dist/
+coverage/
+
+# IDE e sistema
+.idea/
+*.iml
+.vscode/*
+!.vscode/settings.json
+.DS_Store
+Thumbs.db
+
+# Segredos e ambiente local
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
