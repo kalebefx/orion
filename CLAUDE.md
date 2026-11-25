@@ -6,11 +6,12 @@ Contexto do projeto para qualquer sessão de desenvolvimento. Atualizado em 24/1
 
 ## Como trabalhar neste projeto
 
+- **Siga sempre a skill do projeto** [`.claude/skills/orion-mentor/SKILL.md`](.claude/skills/orion-mentor/SKILL.md): você é o dev sênior e mentor de Kalebe. Explique o porquê, faça junto e **não aja sem ser chamado** (código, arquivos, Trello e documentação só com pedido explícito). Ela vale em toda conversa sobre o Orion, mesmo quando não for ativada sozinha.
 - **A documentação manda. O código obedece.** A fonte da verdade é `docs/`. Nunca escrever requisito a partir de comportamento de código. O código se adapta à documentação.
 - **Seguir o cronograma** (`docs/cronograma.md`) e o **processo** (`docs/processo.md`): ver a sprint atual antes de propor trabalho, respeitar DoR e DoD, uma branch por card, Conventional Commits em português e PR para a `main` a partir da S05.
 - **Regras de negócio têm ID (RN01–RN37).** Todo código de regra cita o RN, e todo RN tem teste (`deveRecusarBlocoSobreposto_RN21`).
-- **Trello** ("Orion — Sprints", https://trello.com/b/5mydHl51/orion-sprints): cards com prefixo `[S05]`. Ao concluir uma entrega, mover o card e atualizar este arquivo.
-- **Manter este arquivo atualizado**: status, sprint atual e decisões.
+- **Trello** ("Orion — Sprints", https://trello.com/b/5mydHl51/orion-sprints): cards com prefixo `[S05]`. Mover cards só quando Kalebe pedir. Ao concluir uma entrega, sugira mover o card e atualizar este arquivo.
+- **Este arquivo deve refletir o estado real** (status, sprint atual e decisões). Quando algo mudar, proponha a atualização e faça só com o "sim" de Kalebe.
 - Idioma: português do Brasil em domínio, documentação e commits.
 - Regra de execução: sem commit, o dia não conta.
 
@@ -35,11 +36,11 @@ Fora da v1.0.0: aba de IA (decidido em 24/11), painel admin, compartilhamento, c
 | `regras-de-negocio.md` | RN01–RN37, todas validadas em 24/11 |
 | `cronograma.md` | v2.0: 17 sprints, marcos e tags |
 | `processo.md` | Scrum adaptado, Trello, DoR, DoD, Git, versões, ambientes, CI/CD, testes |
-| `api.md` | Contrato REST `/api/v1`, erros em Problem Details. **Validar na S04** |
+| `api.md` | Contrato REST `/api/v1`, erros em Problem Details. Validado em 25/11 |
 | `tech-stack.md` | Ferramentas, motivos e registro de decisões |
 | `diagramas/diagrama-de-fluxo.md` + `.drawio` + `.png` | Fluxo v2 (draw.io) |
 | `diagramas/diagrama-de-classes.md` + `.drawio` + `.png` | Domínio v2 (draw.io) |
-| `diagramas/modelo-de-dados.md` | ER em Mermaid, restrições, cascatas. **Validar na S04** |
+| `diagramas/modelo-de-dados.md` | ER em Mermaid, restrições, cascatas. Validado em 25/11 |
 | `aprendizados.md` | Diário de estudo de Java |
 
 ---
@@ -143,7 +144,7 @@ Regras-chave:
 
 ### Pendente na S04 (até 06/12)
 - [x] Regras de negócio validadas (24/11). Diagramas de classes e de fluxo v2 no draw.io
-- [ ] Validar modelo de dados e contrato da API
+- [x] Modelo de dados e contrato da API validados (25/11)
 - [ ] Validar escopo MoSCoW e cronograma 2.0
 - [ ] Instalar JDK 21 e Docker Desktop. Criar contas no Railway e no Cloudflare. Proteger a `main`
 - [ ] Retrospectiva do mês 1 (Começar / Parar / Continuar)
