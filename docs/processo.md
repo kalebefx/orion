@@ -105,7 +105,7 @@ Versionamento semântico, com tags no GitHub e notas de release:
 
 | Ambiente | Back-end | Banco | Front-end | Deploy |
 | --- | --- | --- | --- | --- |
-| Local (`dev`) | `mvn spring-boot:run` | PostgreSQL no Docker Compose | `npm run dev` | — |
+| Local (`dev`) | `mvn spring-boot:run` | PostgreSQL 17 instalado no Windows (banco `orion`) | `npm run dev` | — |
 | Produção (`prod`) | Railway | PostgreSQL do Railway | Cloudflare Pages | Automático a cada merge na `main` |
 
 - **CI (GitHub Actions):** em todo push e PR, roda o build e os testes do back e, a partir da S10, o build e o lint do front. PR com CI vermelho não entra.
@@ -120,7 +120,7 @@ Versionamento semântico, com tags no GitHub e notas de release:
 | Tipo | Ferramenta | O que cobre | Desde |
 | --- | --- | --- | --- |
 | Unidade | JUnit 5 + Mockito | Regras de negócio nos services. Cada RN tem pelo menos um teste | S05 |
-| Integração | Spring Boot Test + Testcontainers (PostgreSQL) | Endpoints com banco real, segurança e isolamento por usuário | S06 |
+| Integração | Spring Boot Test + PostgreSQL (`orion_test` local; serviço PostgreSQL no GitHub Actions) | Endpoints com banco real, segurança e isolamento por usuário | S06 |
 | API manual | Postman | Coleção com todos os endpoints, versionada em `docs/postman/` | S05 |
 | Front | Vitest + Testing Library | Componentes com lógica (grade da semana, formulários) | S12 |
 | Ponta a ponta | Roteiro manual de QA | Fluxos do [diagrama de fluxo](diagramas/diagrama-de-fluxo.md) em desktop e celular | S15 |

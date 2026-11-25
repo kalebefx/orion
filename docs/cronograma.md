@@ -60,7 +60,7 @@ Princípios do plano:
 - Validar prioridades e corte por sprint nos [requisitos](requisitos.md)
 - Adotar o [processo](processo.md): DoR, DoD, fluxo Git, Conventional Commits
 - Repositório limpo: `.gitignore`, `bin/` fora do Git, README mínimo
-- Ambiente instalado: JDK 21, Docker Desktop, IntelliJ ou VS Code, Postman
+- Ambiente instalado: JDK 21, PostgreSQL 17, Postman ✔️ (25/11) e Extension Pack for Java no VS Code ou Cursor
 - Retrospectiva do mês 1
 
 ---
@@ -73,7 +73,7 @@ Objetivo: API REST completa, segura, testada e publicada.
 
 - Marcar o console com a tag `console-estudo` e remover `src/` antigo da `main`
 - Projeto Spring Boot (Maven, Java 21) com estrutura em camadas
-- PostgreSQL local via Docker Compose, profiles `dev` e `prod`, Flyway
+- PostgreSQL local (bancos `orion` e `orion_test`), profiles `dev` e `prod`, Flyway
 - CI no GitHub Actions: build e testes em todo push e PR
 - Swagger (springdoc-openapi) e tratamento global de erros
 - Entidades `Usuario` e `Atributo` com migration

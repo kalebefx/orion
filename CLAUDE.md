@@ -47,12 +47,12 @@ Fora da v1.0.0: aba de IA (decidido em 24/11), painel admin, compartilhamento, c
 
 ## Stack
 
-- **Back-end:** Java 21 (alvo; a máquina tem o JDK 26), Spring Boot, Maven, Spring Web, Data JPA, Bean Validation, Spring Security + JWT, PostgreSQL, Flyway, springdoc-openapi, JUnit 5, Mockito, Testcontainers.
+- **Back-end:** Java 21 (alvo; a máquina tem o JDK 26), Spring Boot, Maven, Spring Web, Data JPA, Bean Validation, Spring Security + JWT, PostgreSQL, Flyway, springdoc-openapi, JUnit 5, Mockito. Testes de integração no banco `orion_test` do PostgreSQL local.
 - **Front-end:** React + Vite + TypeScript, React Router, TanStack Query, dnd-kit, Recharts, TipTap, Vitest, ESLint e Prettier.
-- **DevOps:** Git e GitHub (`kalebefx/orion`), GitHub Actions (CI), Docker Compose (Postgres local), Railway (API e banco), Cloudflare Pages (front), monitor de uptime.
+- **DevOps:** Git e GitHub (`kalebefx/orion`), GitHub Actions (CI, com serviço PostgreSQL), PostgreSQL 17 instalado no Windows (sem Docker), Railway (API e banco), Cloudflare Pages (front), monitor de uptime.
 - **Engenharia:** Trello, Figma, draw.io, Mermaid, Postman.
 
-Ambiente na máquina (24/11): Java 26, Maven 3.9, Node 24, git. **Faltam** Docker Desktop e JDK 21. O `gh` CLI também não está instalado.
+Ambiente na máquina (25/11): JDK 21 (Temurin) e Java 26, Maven 3.9, Node 24, git, Postman, PostgreSQL 17.12 (serviço `postgresql-x64-17`, porta padrão 5432, senha do `postgres` testada; o 18 antigo foi removido). Sem Docker, por decisão de 25/11. O `gh` CLI não está instalado.
 
 ---
 
@@ -76,7 +76,6 @@ orion/
 ├── backend/   ← Spring Boot (S05). Pacotes: config, controller, service, repository, domain, dto, exception
 ├── frontend/  ← React (S10)
 ├── docs/
-├── docker-compose.yml
 └── .github/workflows/ci.yml
 ```
 
@@ -116,7 +115,7 @@ Regras-chave:
 |---|---|---|
 | S01–S03 | 09/11–29/11 | Engenharia ✔️ (Figma, requisitos, diagramas, Trello) |
 | **S04** | 30/11–06/12 | Validar regras, dados e API. Ambiente. Retrospectiva do mês 1 |
-| S05 | 07/12–13/12 | Spring Boot, Docker, Flyway, CI, Swagger, API de Atributos |
+| S05 | 07/12–13/12 | Spring Boot, PostgreSQL local, Flyway, CI, Swagger, API de Atributos |
 | S06 | 14/12–20/12 | JWT, isolamento por usuário, API de Hábitos |
 | S07 | 21/12–27/12 | API de Hobbies e Perfil (Natal) |
 | S08 | 28/12–03/01 | API de Blocos com data e concluído (Ano Novo) |
@@ -146,7 +145,8 @@ Regras-chave:
 - [x] Regras de negócio validadas (24/11). Diagramas de classes e de fluxo v2 no draw.io
 - [x] Modelo de dados e contrato da API validados (25/11)
 - [ ] Validar escopo MoSCoW e cronograma 2.0
-- [ ] Instalar JDK 21 e Docker Desktop. Criar contas no Railway e no Cloudflare. Proteger a `main`
+- [x] JDK 21, Postman e PostgreSQL 17 instalados (25/11). Docker fora do projeto
+- [ ] Criar contas no Railway e no Cloudflare. Proteger a `main`
 - [ ] Retrospectiva do mês 1 (Começar / Parar / Continuar)
 - [ ] Commit e push das mudanças de documentação
 
@@ -163,3 +163,4 @@ Regras-chave:
 | 24/11/2026 | Bloco com data (sem Semana). Hábito e hobby com 0..* atributos. Hobby origina hábito. Excluir atributo sempre permitido |
 | 24/11/2026 | Consistência = blocos concluídos ÷ blocos que já terminaram. Tempo feito × planejado. RF50 e RF51 |
 | 24/11/2026 | Diagramas de classes e de fluxo em draw.io (`.drawio` + PNG) |
+| 25/11/2026 | Sem Docker: PostgreSQL instalado no Windows e banco `orion_test` para testes de integração |

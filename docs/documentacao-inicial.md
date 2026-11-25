@@ -120,9 +120,9 @@ Detalhes em [processo.md](processo.md).
 Decisões e motivos em [Tech Stack](tech-stack.md).
 
 - **Engenharia:** Trello, draw.io (classes e fluxo), Mermaid (modelo de dados), Figma, Postman.
-- **Back-end:** Java 21, Spring Boot, Spring Security + JWT, PostgreSQL, JPA, Flyway, JUnit, Testcontainers. Publicação no Railway.
+- **Back-end:** Java 21, Spring Boot, Spring Security + JWT, PostgreSQL, JPA, Flyway, JUnit. Publicação no Railway.
 - **Front-end:** React, Vite, TypeScript. Publicação no Cloudflare Pages.
-- **DevOps:** Git, GitHub, GitHub Actions (CI), deploy contínuo, Docker para o banco local.
+- **DevOps:** Git, GitHub, GitHub Actions (CI), deploy contínuo, PostgreSQL instalado localmente (sem Docker).
 
 ## Status atual
 
@@ -149,7 +149,7 @@ Data de referência: 24/11/2026. Sprint S03. Fase atual: Engenharia.
 
 A S05 começa em 07/12/2026. Até lá, na S04:
 
-1. Instalar o ambiente: JDK 21, Docker Desktop, IDE, Node.js LTS e Postman.
+1. Instalar o Extension Pack for Java no VS Code ou no Cursor. JDK 21, PostgreSQL 17 e Postman já foram instalados em 25/11.
 2. Fazer a retrospectiva do mês 1.
 
 ## Histórico

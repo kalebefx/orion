@@ -25,7 +25,7 @@ Decisões técnicas do Orion e o motivo de cada uma. Uma decisão nova ou uma tr
 | **springdoc-openapi (Swagger)** | Documentação viva da API | Front e Postman sempre batem com o código |
 | **Lombok** (opcional) | Menos getters e setters | Usar com moderação. Records do Java para DTOs |
 | **JUnit 5 + Mockito** | Testes de unidade das regras | Garante que as regras continuam funcionando a cada mudança |
-| **Testcontainers** | Testes de integração com PostgreSQL real | Testa o mesmo banco da produção |
+| **Banco `orion_test`** | Testes de integração com PostgreSQL real | Testa o mesmo banco da produção, sem Docker. No CI, o GitHub Actions sobe um serviço PostgreSQL |
 | **Postman** | Testar endpoints durante o desenvolvimento | Coleção versionada no repositório |
 
 ## Front-end
@@ -48,7 +48,7 @@ Decisões técnicas do Orion e o motivo de cada uma. Uma decisão nova ou uma tr
 | --- | --- |
 | **Git + GitHub** | Versionamento, PRs, tags e releases. Portfólio público |
 | **GitHub Actions** | CI: build, testes e lint em todo push e PR |
-| **Docker Desktop + Docker Compose** | PostgreSQL local igual ao de produção, e Testcontainers |
+| **PostgreSQL 17 (instalado no Windows)** | Banco local na mesma versão principal da produção |
 | **Railway** | Hospedagem da API e do PostgreSQL, com deploy automático a partir da `main` |
 | **Cloudflare Pages** | Hospedagem do front, gratuita e já usada no projeto do salão. Preview por PR |
 | **Monitor de uptime** (UptimeRobot ou similar, gratuito) | Aviso se a API cair (RNF05) |
@@ -56,7 +56,7 @@ Decisões técnicas do Orion e o motivo de cada uma. Uma decisão nova ou uma tr
 ## Ambiente de desenvolvimento
 
 - JDK 21 instalado. Se a máquina tiver um JDK mais novo, o projeto continua compilando para Java 21 via `maven.compiler.release`.
-- Docker Desktop
+- PostgreSQL 17
 - IntelliJ IDEA Community ou VS Code com o Extension Pack for Java
 - Node.js LTS
 - Postman
@@ -72,6 +72,7 @@ Decisões técnicas do Orion e o motivo de cada uma. Uma decisão nova ou uma tr
 | 2026-11-24 | TipTap no caderno | Quill |
 | 2026-11-24 | Java 21 LTS como alvo | Java 25 LTS (suporte mais recente, mas menos testado nos serviços de hospedagem) |
 | 2026-11-24 | Aba de IA fora da v1.0.0 | Casca vazia |
+| 2026-11-25 | Sem Docker: PostgreSQL instalado localmente e banco `orion_test` para os testes de integração | Docker Compose + Testcontainers (mais uma ferramenta para aprender num prazo apertado) |
 | 2026-11-24 | Bloco com data em vez de entidade Semana | Classe Semana com data de início (trocar o início da semana bagunçava semanas antigas) |
 | 2026-11-24 | Diagramas de classes e de fluxo no draw.io | Mermaid |
 | 2026-11-24 | Monorepo com `backend/` e `frontend/` | Dois repositórios (mais trabalho para manter CI, versões e docs em sincronia) |

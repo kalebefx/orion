@@ -10,7 +10,7 @@ Projeto de portfólio desenvolvido no Acelera Hub, do console ao fullstack.
 
 - **Back-end:** Java 21, Spring Boot, Spring Security + JWT, PostgreSQL, JPA, Flyway, JUnit
 - **Front-end:** React, Vite, TypeScript
-- **DevOps:** GitHub Actions, Docker, Railway (API e banco), Cloudflare Pages (front)
+- **DevOps:** GitHub Actions, Railway (API e banco), Cloudflare Pages (front)
 
 ## Documentação
 
