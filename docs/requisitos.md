@@ -6,8 +6,8 @@ Documento de apoio do Orion: o que o sistema deve fazer e sob quais condições 
 | --- | --- |
 | Projeto | Orion |
 | Documento | Requisitos funcionais e não funcionais |
-| Versão | 0.1 |
-| Status | Rascunho de apoio |
+| Versão | 0.3 |
+| Status | Base da v1.0.0 |
 | Origem | Lista elaborada a partir do produto pretendido (semana com blocos, atributos, hábitos, hobbies, caderno e uso por várias pessoas) |
 
 ## 1. Objetivo
@@ -25,7 +25,7 @@ Entram neste escopo:
 - isolamento dos dados por usuário;
 - uso em navegador, em desktop e em tela pequena.
 
-Ficam de fora até serem especificados à parte: painel administrativo, compartilhamento de rotina entre usuários, integração com calendários externos e aplicativo nativo.
+Ficam de fora até serem especificados à parte (Won't nesta versão): painel administrativo, compartilhamento de rotina entre usuários, integração com calendários externos, aplicativo nativo, aba de IA, bloco recorrente e janela flutuante do caderno.
 
 ## 3. Como ler
 
@@ -33,99 +33,108 @@ Ficam de fora até serem especificados à parte: painel administrativo, comparti
 - **RNF** — requisito não funcional. Descreve uma qualidade do sistema (uso, desempenho, segurança, operação).
 - O identificador (RF01, RNF03) é a referência estável. Não reutilizar um identificador para outro assunto.
 - Itens ainda sem regra detalhada continuam válidos como capacidade. A regra entra depois, no mesmo identificador ou num requisito novo, sem apagar o histórico.
+- As regras que detalham cada requisito estão em [regras-de-negocio.md](regras-de-negocio.md) (RN01, RN02...).
+- **Prioridade (MoSCoW)** para a release v1.0.0 de 08/03/2027:
+  - **Must**: sem isso o produto não é entregue.
+  - **Should**: faz parte da v1.0.0, mas é o primeiro a ser cortado se o prazo apertar. O corte é registrado na review da sprint.
+  - **Could**: só entra se sobrar tempo. Não tem sprint reservada.
+  - **Won't (nesta versão)**: listado na seção 2, fora do escopo.
+- **Back** e **Front** indicam a sprint do [cronograma](cronograma.md) em que o requisito é implementado em cada camada.
 
 ## 4. Requisitos funcionais
 
-49 requisitos, agrupados pela área do produto.
+51 requisitos, agrupados pela área do produto. RF50 e RF51 entraram na versão 0.3 e ficam junto da sua área, sem renumerar os outros.
 
 ### 4.1 Autenticação
 
-| ID | Requisito |
-| --- | --- |
-| RF01 | Cadastrar novo usuário (nome, e-mail, senha) |
-| RF02 | Fazer login |
-| RF03 | Fazer logout |
-| RF04 | Recuperar senha |
-| RF05 | Manter usuário logado / sessão |
+| ID | Requisito | Prioridade | Back | Front |
+| --- | --- | --- | --- | --- |
+| RF01 | Cadastrar novo usuário (nome, e-mail, senha) | Must | S06 | S10 |
+| RF02 | Fazer login | Must | S06 | S10 |
+| RF03 | Fazer logout | Must | S06 | S10 |
+| RF04 | Recuperar senha | Could | — | — |
+| RF05 | Manter usuário logado / sessão | Must | S06 | S10 |
 
 ### 4.2 Aba Minha Semana
 
-| ID | Requisito |
-| --- | --- |
-| RF06 | Acessar aba Minha Semana |
-| RF07 | Criar novo bloco |
-| RF08 | Editar bloco |
-| RF09 | Excluir bloco |
-| RF10 | Alterar semana |
-| RF11 | Realocar bloco arrastando com o mouse (drag and drop) para outro dia / horário |
-| RF12 | Filtrar visualização por atributo e por hábito |
+| ID | Requisito | Prioridade | Back | Front |
+| --- | --- | --- | --- | --- |
+| RF06 | Acessar aba Minha Semana | Must | S08 | S12 |
+| RF07 | Criar novo bloco | Must | S08 | S12 |
+| RF08 | Editar bloco | Must | S08 | S12 |
+| RF09 | Excluir bloco | Must | S08 | S12 |
+| RF10 | Alterar semana | Must | S08 | S12 |
+| RF11 | Realocar bloco arrastando com o mouse (drag and drop) para outro dia / horário | Should | S08 | S14 |
+| RF12 | Filtrar visualização por atributo e por hábito | Should | S08 | S12 |
+| RF50 | Marcar e desmarcar bloco como concluído | Must | S08 | S12 |
 
 ### 4.3 Aba Dashboard
 
-| ID | Requisito |
-| --- | --- |
-| RF13 | Acessar aba Dashboard |
-| RF14 | Alterar mês na aba Dashboard |
-| RF15 | Atualizar estatísticas conforme o mês selecionado |
-| RF16 | Visualizar tempo total, tempo por atributo e consistência |
+| ID | Requisito | Prioridade | Back | Front |
+| --- | --- | --- | --- | --- |
+| RF13 | Acessar aba Dashboard | Must | S09 | S13 |
+| RF14 | Alterar mês na aba Dashboard | Must | S09 | S13 |
+| RF15 | Atualizar estatísticas conforme o mês selecionado | Must | S09 | S13 |
+| RF16 | Visualizar tempo total, tempo por atributo e consistência | Must | S09 | S13 |
 
 ### 4.4 Aba Atributos
 
-| ID | Requisito |
-| --- | --- |
-| RF17 | Acessar aba Atributos |
-| RF18 | Adicionar atributo |
-| RF19 | Editar atributo |
-| RF20 | Excluir atributo |
+| ID | Requisito | Prioridade | Back | Front |
+| --- | --- | --- | --- | --- |
+| RF17 | Acessar aba Atributos | Must | S05 | S11 |
+| RF18 | Adicionar atributo | Must | S05 | S11 |
+| RF19 | Editar atributo | Must | S05 | S11 |
+| RF20 | Excluir atributo | Must | S05 | S11 |
 
 ### 4.5 Aba Hábitos
 
-| ID | Requisito |
-| --- | --- |
-| RF21 | Acessar aba Hábitos |
-| RF22 | Adicionar hábito |
-| RF23 | Editar hábito |
-| RF24 | Excluir hábito |
-| RF25 | Ativar hábito |
-| RF26 | Desativar hábito |
+| ID | Requisito | Prioridade | Back | Front |
+| --- | --- | --- | --- | --- |
+| RF21 | Acessar aba Hábitos | Must | S06 | S11 |
+| RF22 | Adicionar hábito | Must | S06 | S11 |
+| RF23 | Editar hábito | Must | S06 | S11 |
+| RF24 | Excluir hábito | Must | S06 | S11 |
+| RF25 | Ativar hábito | Must | S06 | S11 |
+| RF26 | Desativar hábito | Must | S06 | S11 |
 
 ### 4.6 Aba Hobby
 
-| ID | Requisito |
-| --- | --- |
-| RF27 | Acessar aba Hobby |
-| RF28 | Adicionar hobby |
-| RF29 | Editar hobby |
-| RF30 | Excluir hobby |
-| RF31 | Ativar hobby |
-| RF32 | Desativar hobby |
+| ID | Requisito | Prioridade | Back | Front |
+| --- | --- | --- | --- | --- |
+| RF27 | Acessar aba Hobby | Should | S07 | S11 |
+| RF28 | Adicionar hobby | Should | S07 | S11 |
+| RF29 | Editar hobby | Should | S07 | S11 |
+| RF30 | Excluir hobby | Should | S07 | S11 |
+| RF31 | Ativar hobby | Should | S07 | S11 |
+| RF32 | Desativar hobby | Should | S07 | S11 |
+| RF51 | Criar hábito a partir de um hobby | Should | S07 | S11 |
 
 ### 4.7 Aba Caderno
 
-| ID | Requisito |
-| --- | --- |
-| RF33 | Acessar aba Caderno |
-| RF34 | Abrir caderno |
-| RF35 | Criar nova nota no caderno |
-| RF36 | Editar nota no caderno |
-| RF37 | Criar nova divisória no caderno |
-| RF38 | Navegar entre as divisórias do caderno |
-| RF39 | Excluir divisória / nota |
+| ID | Requisito | Prioridade | Back | Front |
+| --- | --- | --- | --- | --- |
+| RF33 | Acessar aba Caderno | Should | S09 | S14 |
+| RF34 | Abrir caderno | Should | S09 | S14 |
+| RF35 | Criar nova nota no caderno | Should | S09 | S14 |
+| RF36 | Editar nota no caderno | Should | S09 | S14 |
+| RF37 | Criar nova divisória no caderno | Should | S09 | S14 |
+| RF38 | Navegar entre as divisórias do caderno | Should | S09 | S14 |
+| RF39 | Excluir divisória / nota | Should | S09 | S14 |
 
 ### 4.8 Aba Perfil
 
-| ID | Requisito |
-| --- | --- |
-| RF40 | Acessar aba Perfil |
-| RF41 | Visualizar informações pessoais (nome, e-mail, foto) |
-| RF42 | Editar informações pessoais |
-| RF43 | Alterar foto de perfil |
-| RF44 | Definir metas semanais por atributo |
-| RF45 | Configurar início da semana |
-| RF46 | Configurar aparência (Claro / Escuro) |
-| RF47 | Configurar fuso horário |
-| RF48 | Configurar lembretes |
-| RF49 | Salvar alterações do perfil |
+| ID | Requisito | Prioridade | Back | Front |
+| --- | --- | --- | --- | --- |
+| RF40 | Acessar aba Perfil | Should | S07 | S13 |
+| RF41 | Visualizar informações pessoais (nome, e-mail, foto) | Should | S07 | S13 |
+| RF42 | Editar informações pessoais | Should | S07 | S13 |
+| RF43 | Alterar foto de perfil | Could | — | — |
+| RF44 | Definir metas semanais por atributo | Must | S07 | S13 |
+| RF45 | Configurar início da semana | Should | S07 | S13 |
+| RF46 | Configurar aparência (Claro / Escuro) | Should | S07 | S13 |
+| RF47 | Configurar fuso horário | Should | S07 | S13 |
+| RF48 | Configurar lembretes | Could | S07 (só a preferência) | S13 (só a preferência) |
+| RF49 | Salvar alterações do perfil | Should | S07 | S13 |
 
 ## 5. Requisitos não funcionais
 
@@ -145,20 +154,37 @@ Ficam de fora até serem especificados à parte: painel administrativo, comparti
 | RNF10 | Backup | O sistema deve realizar backup periódico dos dados para evitar perda de informações em caso de falha no servidor ou no banco de dados. |
 | RNF11 | Acessibilidade | A interface deve possuir contraste adequado, tamanhos de fonte legíveis e permitir navegação por teclado, facilitando o uso por pessoas com diferentes necessidades. |
 
+### 5.1 Como cada RNF é atendido e verificado
+
+| ID | Como atender | Como verificar | Sprint |
+| --- | --- | --- | --- |
+| RNF01 | Seguir o protótipo do Figma | Teste de uso ponta a ponta | S15 |
+| RNF02 | Paginação nas listas grandes, índices no banco | Lighthouse e aba Network do navegador | S15 |
+| RNF03 | BCrypt nas senhas, JWT, filtro por usuário em toda consulta | Testes de integração tentando acessar dado de outro usuário | S06 |
+| RNF04 | Front sem APIs exclusivas de um navegador | Teste manual em Chrome, Edge, Firefox e Safari (iOS) | S15 |
+| RNF05 | Hospedagem gerenciada (Railway e Cloudflare) | Monitor de uptime gratuito no endpoint de saúde | S15 |
+| RNF06 | API sem estado (JWT), consultas paginadas | Revisão de código | S09 |
+| RNF07 | Toda alteração salva na hora pela API | Recarregar a página após cada ação no QA | S15 |
+| RNF08 | Layout responsivo desde a S10 | Teste em celular real e no modo responsivo do navegador | S15 |
+| RNF09 | Camadas controller, service e repository. Componentes no front | CI verde, revisão no PR | Todas |
+| RNF10 | Backup do PostgreSQL no Railway | Restaurar um backup de teste | S15 |
+| RNF11 | Contraste, rótulos e navegação por teclado | Lighthouse (acessibilidade) e teste só com teclado | S15 |
+
 ## 6. Contagem
 
 | Tipo | Quantidade |
 | --- | --- |
-| Requisitos funcionais | 49 (RF01–RF49) |
+| Requisitos funcionais | 51 (RF01–RF51) |
 | Requisitos não funcionais | 11 (RNF01–RNF11) |
-| Total | 60 |
+| Total | 62 |
 
 ## 7. Diagramas
 
 | Diagrama | Onde está | Situação |
 | --- | --- | --- |
-| Fluxo do produto | [diagrama-de-fluxo.md](diagramas/diagrama-de-fluxo.md) | Alinhado aos requisitos, com modal do bloco e histórico do atributo |
-| Classes | [diagrama-de-classes.md](diagramas/diagrama-de-classes.md) | Alinhado ao draw.io: várias semanas com data, meta no atributo, perfil no usuário, bloco com zero ou mais atributos |
+| Fluxo do produto | [diagrama-de-fluxo.md](diagramas/diagrama-de-fluxo.md) (draw.io) | v2: inclui bloco concluído (RF50) e hábito a partir de hobby (RF51) |
+| Classes | [diagrama-de-classes.md](diagramas/diagrama-de-classes.md) (draw.io) | v2: bloco com data (sem classe Semana), hábito e hobby com 0..* atributos, hobby origina hábito, bloco concluído |
+| Modelo de dados | [modelo-de-dados.md](diagramas/modelo-de-dados.md) | Tabelas derivadas do diagrama de classes v2 |
 
 ## 8. Histórico
 
@@ -168,3 +194,5 @@ Ficam de fora até serem especificados à parte: painel administrativo, comparti
 | 0.1 | 2026-11-23 | Ligação com o diagrama de fluxo e com o diagrama de classes. |
 | 0.1 | 2026-11-23 | Situação dos diagramas: fluxo com modal do bloco e histórico do atributo; classes com ajustes manuais pendentes. |
 | 0.1 | 2026-11-24 | Diagrama de classes alinhado: semanas com data, meta, perfil e bloco com zero ou mais atributos. |
+| 0.2 | 2026-11-24 | Prioridade MoSCoW e sprint de back e front em cada RF. Aba de IA e bloco recorrente formalmente fora da v1.0.0. Ligação com as regras de negócio. |
+| 0.3 | 2026-11-24 | RF50 (bloco concluído) e RF51 (hábito a partir de hobby). Regras validadas: semana como visualização, hábito e hobby com vários atributos. Diagramas no draw.io. |

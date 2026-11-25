@@ -1,230 +1,164 @@
 # CLAUDE.md — Projeto Orion
 
-Contexto do projeto para qualquer sessão de desenvolvimento. Conferido contra o repositório e a pasta `docs/` em 24/11/2026.
+Contexto do projeto para qualquer sessão de desenvolvimento. Atualizado em 24/11/2026.
 
 ---
 
 ## Como trabalhar neste projeto
 
-- **A documentação manda. O código obedece.** A fonte da verdade é `docs/` (requisitos, diagramas, cronograma). Nunca escrever requisito a partir de um comportamento do console. O caminho é o contrário: o código se adapta à documentação.
-- **Seguir o cronograma** em `docs/cronograma.md`. Antes de propor trabalho, ver em que semana estamos e o que está previsto para ela.
-- **Manter este arquivo atualizado.** Quando uma entrega do cronograma for concluída, uma decisão for tomada ou a estrutura do projeto mudar, atualizar as seções "Status atual" e "Decisões em aberto".
-- **Idioma:** português do Brasil em código de domínio, documentação e mensagens de commit.
-- **Regra de execução:** sem commit, o dia não conta.
+- **A documentação manda. O código obedece.** A fonte da verdade é `docs/`. Nunca escrever requisito a partir de comportamento de código. O código se adapta à documentação.
+- **Seguir o cronograma** (`docs/cronograma.md`) e o **processo** (`docs/processo.md`): ver a sprint atual antes de propor trabalho, respeitar DoR e DoD, uma branch por card, Conventional Commits em português e PR para a `main` a partir da S05.
+- **Regras de negócio têm ID (RN01–RN37).** Todo código de regra cita o RN, e todo RN tem teste (`deveRecusarBlocoSobreposto_RN21`).
+- **Trello** ("Orion — Sprints", https://trello.com/b/5mydHl51/orion-sprints): cards com prefixo `[S05]`. Ao concluir uma entrega, mover o card e atualizar este arquivo.
+- **Manter este arquivo atualizado**: status, sprint atual e decisões.
+- Idioma: português do Brasil em domínio, documentação e commits.
+- Regra de execução: sem commit, o dia não conta.
 
 ---
 
 ## O que é o Orion
 
-Sistema de gestão de rotina pessoal baseado em atributos. A pessoa cadastra atributos (Saúde, Inteligência, Social...), cria hábitos e hobbies ligados a esses atributos e organiza a semana em blocos de tempo. O sistema mostra quanto tempo foi dedicado a cada atributo e oferece um caderno de anotações.
+Sistema de gestão de rotina pessoal baseado em atributos. A pessoa cadastra atributos (Saúde, Inteligência, Social...), cria hábitos e hobbies ligados a eles, organiza a semana em blocos de tempo, acompanha tempo e metas por atributo e usa um caderno de notas. Cada usuário vê só os próprios dados. Uso no navegador, desktop e celular.
 
-Cada pessoa autenticada vê e altera apenas os próprios dados. Uso no navegador, desktop e celular.
+Portfólio técnico no Acelera Hub. **Release v1.0.0: 08/03/2027.**
 
-Desenvolvido no Acelera Hub como portfólio técnico, do console ao fullstack. **Prazo de publicação: 08/03/2027.**
-
-Fora desta versão: painel administrativo, compartilhamento de rotina entre usuários, integração com calendários externos, aplicativo nativo, bloco recorrente.
+Fora da v1.0.0: aba de IA (decidido em 24/11), painel admin, compartilhamento, calendários externos, app nativo, bloco recorrente, janela flutuante do caderno. Could (só se sobrar tempo): recuperar senha (RF04), foto (RF43), envio de lembretes (RF48).
 
 ---
 
-## Stack (conforme `docs/tech-stack.md`)
+## Documentos (`docs/`)
 
-| Camada | Tecnologia |
+| Arquivo | Conteúdo |
 |---|---|
-| Back-end | Java + Spring Boot |
-| Banco de dados | PostgreSQL + JPA |
-| Testes | JUnit |
-| Front-end | React |
-| Hospedagem back | Railway (API + banco) |
-| Hospedagem front | Cloudflare Pages |
-| Versionamento | Git + GitHub (`kalebefx/orion`) |
-| Teste de endpoints | Postman |
-| Gestão de sprints | Trello |
-| Diagramas | draw.io (classes) e Mermaid (fluxo) |
-| Protótipo | Figma |
-
-Ainda **não decidido** na documentação: mecanismo de autenticação (JWT foi citado em conversa, mas não está no tech-stack) e editor de texto do caderno (Quill ou TipTap, citados em conversa).
+| `documentacao-inicial.md` | Visão geral, escopo, telas, status |
+| `requisitos.md` | RF01–RF51 com prioridade MoSCoW e sprint de back e front. RNF01–RNF11 com forma de verificação |
+| `regras-de-negocio.md` | RN01–RN37, todas validadas em 24/11 |
+| `cronograma.md` | v2.0: 17 sprints, marcos e tags |
+| `processo.md` | Scrum adaptado, Trello, DoR, DoD, Git, versões, ambientes, CI/CD, testes |
+| `api.md` | Contrato REST `/api/v1`, erros em Problem Details. **Validar na S04** |
+| `tech-stack.md` | Ferramentas, motivos e registro de decisões |
+| `diagramas/diagrama-de-fluxo.md` + `.drawio` + `.png` | Fluxo v2 (draw.io) |
+| `diagramas/diagrama-de-classes.md` + `.drawio` + `.png` | Domínio v2 (draw.io) |
+| `diagramas/modelo-de-dados.md` | ER em Mermaid, restrições, cascatas. **Validar na S04** |
+| `aprendizados.md` | Diário de estudo de Java |
 
 ---
 
-## Metodologia
+## Stack
 
-Scrum simplificado, sprints semanais. **6h por semana: segunda, terça, quarta e sexta, das 19:30 às 21:00.**
+- **Back-end:** Java 21 (alvo; a máquina tem o JDK 26), Spring Boot, Maven, Spring Web, Data JPA, Bean Validation, Spring Security + JWT, PostgreSQL, Flyway, springdoc-openapi, JUnit 5, Mockito, Testcontainers.
+- **Front-end:** React + Vite + TypeScript, React Router, TanStack Query, dnd-kit, Recharts, TipTap, Vitest, ESLint e Prettier.
+- **DevOps:** Git e GitHub (`kalebefx/orion`), GitHub Actions (CI), Docker Compose (Postgres local), Railway (API e banco), Cloudflare Pages (front), monitor de uptime.
+- **Engenharia:** Trello, Figma, draw.io, Mermaid, Postman.
 
-- **Segunda (planning, 10 min):** meta da semana e tarefas no Trello
-- **Sexta (review, 10 min):** o que foi entregue e o que ficou pendente
-- **Retrospectiva:** fim de cada mês (semanas 4, 9 e 14)
+Ambiente na máquina (24/11): Java 26, Maven 3.9, Node 24, git. **Faltam** Docker Desktop e JDK 21. O `gh` CLI também não está instalado.
 
 ---
 
-## Estrutura atual do repositório
+## Estrutura do repositório
 
-Projeto Java simples do VS Code (sem Maven/Gradle). Configuração em `.vscode/settings.json`: fontes em `src`, saída em `bin`, libs em `lib/**/*.jar` (pasta `lib` não existe).
+Hoje:
 
 ```
 orion/
+├── CLAUDE.md, README.md (mínimo), .gitignore
 ├── .vscode/settings.json
-├── bin/                         ← .class compilados (gerado)
-├── docs/
-│   ├── documentacao-inicial.md  ← documento de entrada, status e pendências
-│   ├── requisitos.md            ← RF01–RF49, RNF01–RNF11
-│   ├── tech-stack.md
-│   ├── cronograma.md            ← 16 semanas
-│   ├── aprendizados.md          ← diário de estudo de Java
-│   └── diagramas/
-│       ├── diagrama-de-classes.md + diagrama-de-classes.png  (draw.io)
-│       └── diagrama-de-fluxo.md  (Mermaid, dentro do .md)
-├── src/com/kalebe/orion/        ← console de estudo (ver abaixo)
-│   ├── model/    Atributo, Bloco, Habito, Semana
-│   ├── service/  AtributoService, BlocoService, HabitoService, OrionService (fachada)
-│   └── ui/       Main, Menu (Scanner + switch, 10 opções)
-├── .gitignore                   ← vazio
-└── README.md                    ← ainda é o texto padrão do VS Code
+├── docs/                    ← ver tabela acima
+├── src/com/kalebe/orion/    ← console de estudo (model, service, ui)
+└── bin/                     ← compilado, fora do Git (está no .gitignore)
 ```
 
-### Estrutura planejada para o Spring Boot (semana 5 em diante)
+Planejada (monorepo, a partir da S05):
 
-Ainda não existe. Proposta: `src/main/java/com/kalebe/orion/` com `model/`, `repository/`, `service/`, `controller/` (e `security/` quando a autenticação entrar no escopo).
+```
+orion/
+├── backend/   ← Spring Boot (S05). Pacotes: config, controller, service, repository, domain, dto, exception
+├── frontend/  ← React (S10)
+├── docs/
+├── docker-compose.yml
+└── .github/workflows/ci.yml
+```
 
----
-
-## O console em `src/`
-
-É um **ensaio de aprendizado**, não a base do produto. Dados só em memória. Fluxo: `Menu → OrionService → XService → model`.
-
-Diferenças em relação ao diagrama de classes: não tem Usuario, Hobby, Caderno, meta nem datas na Semana. `Habito` tem um atributo, mas o menu não o usa.
-
-Bugs conhecidos (não corrigidos, por decisão):
-1. `excluirBloco` remove do `BlocoService` mas não da `Semana`, então o bloco excluído continua aparecendo.
-2. `limparTela()` no início do laço apaga a saída de "Ver semana" e "Tempo por atributo" antes de dar para ler.
-3. `visualizarSemana` imprime os objetos Atributo/Habito com `toString()` padrão, em vez de `getNome()`.
-4. Entrada inválida (`nextInt`, `LocalTime.parse`) derruba o programa.
+Na S05, o console recebe a tag `console-estudo` e `src/`, `bin/` e `.vscode/` saem da `main`.
 
 ---
 
-## Modelo de domínio (conforme `docs/diagramas/diagrama-de-classes.md`)
+## O console em `src/` (ensaio, não é a base do produto)
 
-| Classe | Atributos |
-|---|---|
-| Usuario | nome, email, senha, foto, inicioSemana, aparencia, fusoHorario, lembretesAtivos |
-| Semana | listaBlocos, dataInicio, dataFim |
-| Bloco | acao, horaInicio, horaFim, diaSemana, descricao |
-| Atributo | nome, cor, metasHorasSemanais |
-| Habito | nome, ativo |
-| Hobby | nome, ativo |
-| Caderno | divisorias |
-| Divisoria | nome, notas |
-| Nota | titulo, conteudo, dataCriacao |
-
-- `enum DiaSemana`: SEGUNDA a DOMINGO. `enum Aparencia`: CLARO, ESCURO.
-
-Relações:
-- Usuario possui 0..* hobbies, hábitos, atributos e semanas, e 1 caderno.
-- Semana organiza 0..* blocos.
-- **Bloco usa 0..\* atributos** e referencia **no máximo 1 hábito**.
-- Hábito e hobby se ligam a 1 atributo. **Hobby não entra no bloco.**
-- Caderno tem 1..* divisórias. Divisória tem 0..* notas.
-
-Regras já fixadas:
-- O tempo do bloco conta **inteiro para cada atributo** ligado a ele (1h com Social e Físico = 1h em cada).
-- Dashboard não é classe: tempo total, tempo por atributo e consistência são cálculos sobre blocos e metas.
-- **Bloco recorrente está fora desta versão.**
+Dados só em memória. Fluxo: `Menu → OrionService → XService → model`. Não corrigir. Bugs conhecidos: excluir bloco não tira o bloco da Semana; `limparTela()` apaga a saída; `toString` padrão em Atributo e Hábito; entrada inválida derruba o programa.
 
 ---
 
-## Funcionalidades (conforme `docs/documentacao-inicial.md`)
+## Modelo de domínio (resumo, v2 de 24/11/2026)
 
-| Área / Tela | Requisitos | Observações |
+- Usuario (com as preferências do perfil) 1—1 Caderno. Usuario 1—N Atributo, Habito, Hobby, Bloco.
+- **Hábito e Hobby têm 0..* atributos** (`habito_atributo`, `hobby_atributo`).
+- **Hobby origina 0..* hábitos** (`habito.hobby_origem_id`). O hábito nasce com uma cópia dos atributos do hobby. **Hobby não entra no bloco.**
+- **Bloco tem `data`** (não existe classe Semana: a semana é só a visualização de 7 dias a partir de `inicioSemana`). Bloco → 0..1 Hábito, 0..* Atributos (`bloco_atributo`), e `concluido`.
+- Caderno 1—N Divisoria 1—N Nota. Enums: DiaSemana (`inicioSemana`) e Aparencia.
+
+Regras-chave:
+- Excluir atributo é sempre permitido e só remove os vínculos (RN12).
+- Escolher um hábito no bloco adiciona os atributos dele (RN23).
+- O tempo do bloco conta inteiro para cada atributo (RN25).
+- Tempo feito = blocos concluídos. Tempo planejado = todos os blocos (RN26).
+- Consistência = concluídos ÷ blocos que já terminaram (RN28). Só é possível concluir um bloco que já começou (RN37).
+- Blocos na mesma data não se sobrepõem, mas podem encostar (RN21). Horários em passos de 15 minutos, sem atravessar a meia-noite (RN20).
+- Recurso de outro usuário responde 404 (RN01).
+- No front, a grade continua semanal, e arrastar um bloco troca a data dele (RN24).
+
+---
+
+## Cronograma (resumo)
+
+| Sprint | Período | Entrega |
 |---|---|---|
-| Autenticação | RF01–RF05 | Cadastro, login, logout, recuperar senha, sessão |
-| Minha Semana (tela principal) | RF06–RF12 | Criar/editar/excluir bloco, trocar semana, drag and drop (RF11), filtro por atributo e hábito. Modal de detalhes do bloco |
-| Dashboard | RF13–RF16 | Visão mensal: tempo total, por atributo, consistência. Barra de progresso da meta (RF16 + RF44) |
-| Detalhe do atributo | RF16, RF44 | Histórico de horas por semana |
-| Atributos | RF17–RF20 | CRUD |
-| Hábitos | RF21–RF26 | CRUD + ativar/desativar |
-| Hobby | RF27–RF32 | CRUD + ativar/desativar |
-| Caderno | RF33–RF39 | Divisórias e notas. Tela cheia na visão do produto. Janela flutuante: versão futura |
-| Perfil | RF40–RF49 | Nome, e-mail, foto, metas semanais, início da semana, aparência, fuso, lembretes |
-| IA | — | Aparece no Figma, **sem requisito**. Decisão em aberto |
-
-Requisitos não funcionais: RNF01 Usabilidade · RNF02 Desempenho (telas em até 2s) · RNF03 Segurança (senha criptografada, dados isolados por usuário) · RNF04 Compatibilidade (Chrome, Edge, Firefox, Safari) · RNF05 Disponibilidade 24/7 · RNF06 Escalabilidade · RNF07 Persistência automática · RNF08 Responsividade · RNF09 Manutenibilidade · RNF10 Backup · RNF11 Acessibilidade.
-
----
-
-## Cronograma (09/11/2026 → 08/03/2027)
-
-| Sem. | Período | Entregas |
-|---|---|---|
-| **Fase 1 — Engenharia** | | |
-| 1 | 09/11–15/11 | Tema, repo, README inicial, Acelera Hub ✔️ |
-| 2 | 16/11–22/11 | Modelagem console, tech stack, documentação inicial ✔️ |
-| 3 | 23/11–29/11 | Figma ✔️, requisitos ✔️, diagrama de classes ✔️ |
-| 4 | 30/11–06/12 | Diagrama de fluxo ✔️, Trello com as sprints, retrospectiva do mês 1 |
-| **Fase 2 — Back-end** | | |
-| 5 | 07/12–13/12 | Migrar para Spring Boot, estrutura de pastas |
-| 6 | 14/12–20/12 | PostgreSQL + JPA, models como `@Entity`, repositórios |
-| 7 | 21/12–27/12 (Natal) | Controllers REST: Atributo e Hábito |
-| 8 | 28/12–03/01 (Ano Novo) | Controllers REST: Bloco e Semana |
-| 9 | 04/01–10/01 | 5 testes JUnit, Postman, publicar no Railway, retrospectiva do mês 2 |
-| **Fase 3 — Front-end** | | |
-| 10 | 11/01–17/01 | Projeto React, tela de Atributos |
-| 11 | 18/01–24/01 | Telas de Hábitos e Blocos |
-| 12 | 25/01–31/01 | Tela da Semana, tela de Tempo por Atributo |
-| 13 | 01/02–07/02 | Conectar telas à API, teste ponta a ponta |
-| 14 | 08/02–14/02 | Ajustes, publicar no Cloudflare Pages, retrospectiva do mês 3 |
-| **Fase 4 — Finalização** | | |
-| 15 | 15/02–21/02 (Carnaval) | README completo com prints, documentação final |
-| 16 | 22/02–28/02 | Apresentação de 2 min, post e perfil no LinkedIn, Acelera Hub |
-| 🎯 | 08/03/2027 | Projeto fullstack publicado e acessível pelo celular |
-
-**Atenção:** as fases 2 e 3, como estão hoje, cobrem só atributo, hábito, bloco e semana. Autenticação, hobby, caderno, dashboard e perfil ainda não têm sprint. Falta o corte de escopo (ver abaixo).
+| S01–S03 | 09/11–29/11 | Engenharia ✔️ (Figma, requisitos, diagramas, Trello) |
+| **S04** | 30/11–06/12 | Validar regras, dados e API. Ambiente. Retrospectiva do mês 1 |
+| S05 | 07/12–13/12 | Spring Boot, Docker, Flyway, CI, Swagger, API de Atributos |
+| S06 | 14/12–20/12 | JWT, isolamento por usuário, API de Hábitos |
+| S07 | 21/12–27/12 | API de Hobbies e Perfil (Natal) |
+| S08 | 28/12–03/01 | API de Blocos com data e concluído (Ano Novo) |
+| S09 | 04/01–10/01 | Estatísticas, Caderno, deploy no Railway, `v0.1.0`, retrospectiva |
+| S10 | 11/01–17/01 | React, CI/CD do front, login |
+| S11 | 18/01–24/01 | Telas de Atributos, Hábitos e Hobby |
+| S12 | 25/01–31/01 | Minha Semana e filtros |
+| S13 | 01/02–07/02 | Dashboard e Perfil |
+| S14 | 08/02–14/02 | Caderno, drag and drop, `v0.2.0`, retrospectiva |
+| S15 | 15/02–21/02 | QA, backup, monitoramento, README (Carnaval) |
+| S16 | 22/02–28/02 | Documentação final, apresentação, LinkedIn |
+| S17 | 01/03–07/03 | Buffer, escopo congelado, retrospectiva final |
+| 🎯 | 08/03/2027 | `v1.0.0` |
 
 ---
 
-## Status atual (semana 3 · 24/11/2026 · Fase 1 — Engenharia)
+## Status atual (24/11/2026 · S03 · Fase 1)
 
 ### Concluído
-- [x] Repositório no GitHub, entrada no Acelera Hub
-- [x] Tech stack
-- [x] Console em Java (ensaio: Atributo, Bloco, Habito, Semana + services + Menu + Main)
-- [x] Documentação inicial (v0.4)
-- [x] Protótipo no Figma
-- [x] Requisitos v0.1 (RF01–RF49, RNF01–RNF11)
-- [x] Diagrama de classes no draw.io (alinhado em 24/11)
-- [x] Diagrama de fluxo (Mermaid)
-- [x] Diário de aprendizados (em uso)
+- [x] Repositório, Acelera Hub, tech stack, documentação inicial (v0.5)
+- [x] Figma, requisitos v0.2, diagrama de fluxo, diagrama de classes
+- [x] Trello reestruturado no fluxo Scrum: Referência, Product Backlog, Sprint Backlog, Em andamento, Em revisão, Concluído, Fora da v1.0.0
+- [x] Cronograma 2.0, processo, rascunhos de regras de negócio, modelo de dados e API
+- [x] `.gitignore` e `bin/` fora do Git (falta commitar)
 
-### Pendente na Fase 1 (até 06/12)
-- [ ] Configurar Trello com as sprints (semana 4)
-- [ ] Retrospectiva do mês 1 (semana 4)
-- [ ] Escrever as regras de negócio que faltam: campos obrigatórios, conflito de horário, cálculo de consistência, efeito de excluir atributo com hábitos/blocos
-- [ ] Decidir a aba de IA
-- [ ] Corte de escopo: marcar no cronograma o que entra até 08/03 e o que vira backlog
-
-Sem as regras de negócio e o corte de escopo, migrar para Spring Boot (07/12) começa cedo demais.
-
-### Próximo na Fase 2
-- [ ] Semana 5: migrar para Spring Boot
-- [ ] Semana 6: PostgreSQL + JPA
-- [ ] Semanas 7–8: controllers REST
-- [ ] Semana 9: JUnit, Postman, Railway
+### Pendente na S04 (até 06/12)
+- [x] Regras de negócio validadas (24/11). Diagramas de classes e de fluxo v2 no draw.io
+- [ ] Validar modelo de dados e contrato da API
+- [ ] Validar escopo MoSCoW e cronograma 2.0
+- [ ] Instalar JDK 21 e Docker Desktop. Criar contas no Railway e no Cloudflare. Proteger a `main`
+- [ ] Retrospectiva do mês 1 (Começar / Parar / Continuar)
+- [ ] Commit e push das mudanças de documentação
 
 ---
 
-## Decisões em aberto
+## Decisões registradas
 
-| Decisão | Opções |
+| Data | Decisão |
 |---|---|
-| Aba de IA | Só a aba vazia nesta versão, ou fora do escopo até ter requisito |
-| Escopo de 08/03 | Autenticação, hobby, caderno, dashboard e perfil: entram no prazo ou vão para o backlog? |
-| Autenticação | JWT (citado em conversa) ou outra. Não está no tech-stack |
-| Editor do caderno | Quill ou TipTap (citados em conversa) |
-
----
-
-## Observações
-
-- Drag and drop (RF11) é a funcionalidade mais complexa do front: reservar tempo extra.
-- Janela flutuante do caderno fica para versão futura.
-- O README é o padrão do VS Code e só será reescrito na semana 15.
-- `docs/aprendizados.md` tem trechos de código soltos no fim do arquivo, sem formatação.
-- Projeto disponibilizado gratuitamente para a comunidade Acelera Hub.
+| 24/11/2026 | Escopo completo até 08/03, priorizado por MoSCoW. Carga horária definida pelo dev |
+| 24/11/2026 | Aba de IA fora da v1.0.0 |
+| 24/11/2026 | JWT, Flyway, TypeScript, TipTap, Java 21, monorepo |
+| 24/11/2026 | S17 (01/03–07/03) como buffer de entrega |
+| 24/11/2026 | Bloco com data (sem Semana). Hábito e hobby com 0..* atributos. Hobby origina hábito. Excluir atributo sempre permitido |
+| 24/11/2026 | Consistência = blocos concluídos ÷ blocos que já terminaram. Tempo feito × planejado. RF50 e RF51 |
+| 24/11/2026 | Diagramas de classes e de fluxo em draw.io (`.drawio` + PNG) |

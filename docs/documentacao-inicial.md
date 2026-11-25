@@ -6,7 +6,7 @@ Documento de entrada do projeto. Ele descreve o produto, a forma de trabalhar e 
 | --- | --- |
 | Projeto | Orion |
 | Documento | Documentação inicial |
-| Versão | 0.4 |
+| Versão | 0.6 |
 | Status | Em uso |
 | Atualizado em | 2026-11-24 |
 
@@ -14,150 +14,144 @@ Documento de entrada do projeto. Ele descreve o produto, a forma de trabalhar e 
 
 | Documento | Para quê |
 | --- | --- |
-| [Requisitos](requisitos.md) | O que o sistema deve fazer (RF01–RF49) e com que qualidade (RNF01–RNF11) |
-| [Tech Stack](tech-stack.md) | Ferramentas escolhidas e o motivo de cada uma |
-| [Cronograma](cronograma.md) | 16 sprints, de 09/11/2026 a 08/03/2027 |
-| [Diagrama de fluxo](diagramas/diagrama-de-fluxo.md) | Caminho do usuário autenticado pelas abas |
-| [Diagrama de classes](diagramas/diagrama-de-classes.md) | Modelo de domínio alinhado ao draw.io |
-| [Aprendizados](aprendizados.md) | Diário do que foi estudado no código exploratório |
+| [Requisitos](requisitos.md) | O que o sistema deve fazer (RF01–RF51), com que qualidade (RNF01–RNF11), prioridade e sprint de cada um |
+| [Regras de negócio](regras-de-negocio.md) | Como cada requisito se comporta (RN01–RN37) |
+| [Tech Stack](tech-stack.md) | Ferramentas escolhidas, o motivo de cada uma e o registro de decisões |
+| [Cronograma](cronograma.md) | 17 sprints, de 09/11/2026 à release de 08/03/2027 |
+| [Processo](processo.md) | Scrum adaptado, Trello, DoR, DoD, Git, CI/CD, ambientes e testes |
+| [Contrato da API](api.md) | Endpoints REST, formato de erro e convenções |
+| [Diagrama de fluxo](diagramas/diagrama-de-fluxo.md) | Caminho do usuário autenticado pelas abas (draw.io) |
+| [Diagrama de classes](diagramas/diagrama-de-classes.md) | Modelo de domínio (draw.io) |
+| [Modelo de dados](diagramas/modelo-de-dados.md) | Tabelas, restrições e cascatas no PostgreSQL |
+| [Aprendizados](aprendizados.md) | Diário do que foi estudado |
 
 ## Regra de engenharia
 
 A documentação manda. O código obedece.
 
-O console em `src/` foi um ensaio feito antes da engenharia. Ele serviu para aprender modelagem e Java. Ele não é a especificação e não é a arquitetura do produto. Quando a fase de back-end começar, o código muda para caber nesta documentação, nos requisitos e nos diagramas. O caminho inverso não vale: achar um comportamento no console e escrever o requisito em cima dele.
+O console em `src/` foi um ensaio feito antes da engenharia. Ele serviu para aprender modelagem e Java. Ele não é a especificação e não é a arquitetura do produto. Na S05 ele recebe a tag `console-estudo` e sai da `main`, e o projeto Spring Boot começa do zero, seguindo esta documentação. O caminho inverso não vale: achar um comportamento no console e escrever o requisito em cima dele.
 
 Ordem de trabalho:
 
 1. Produto e protótipo (Figma).
-2. Requisitos.
-3. Diagramas.
+2. Requisitos e regras de negócio.
+3. Diagramas, modelo de dados e contrato da API.
 4. Só então Spring Boot, banco, testes, React e publicação.
 
 ## Sobre o projeto
 
-Orion é um sistema de gestão de rotina pessoal baseado em atributos. A pessoa cadastra atributos (Saúde, Inteligência, Social), cria hábitos e hobbies ligados a esses atributos e organiza a semana em blocos de tempo. O sistema mostra quanto tempo foi dedicado a cada atributo e oferece um caderno para anotações.
+Orion é um sistema de gestão de rotina pessoal baseado em atributos. A pessoa cadastra atributos (Saúde, Inteligência, Social), cria hábitos e hobbies que podem estar ligados a esses atributos, transforma hobbies em hábitos e organiza a semana em blocos de tempo. Ela marca cada bloco como cumprido ou não, e o sistema mostra o tempo feito e planejado por atributo, a consistência e oferece um caderno para anotações.
 
 Cada pessoa autenticada vê e altera apenas os próprios dados. O uso é no navegador, no desktop e no celular.
 
-O projeto é desenvolvido no Acelera Hub como portfólio técnico, do console ao fullstack. O prazo de publicação é 08/03/2027.
+O projeto é desenvolvido no Acelera Hub como portfólio técnico, do console ao fullstack. A release v1.0.0 é em 08/03/2027.
 
-Ficam de fora desta versão, até serem especificados à parte: painel administrativo, compartilhamento de rotina entre usuários, integração com calendários externos e aplicativo nativo.
+Ficam de fora da v1.0.0: aba de IA, painel administrativo, compartilhamento de rotina entre usuários, integração com calendários externos, aplicativo nativo, bloco recorrente e janela flutuante do caderno.
 
 ## Funcionalidades
 
-### Acesso
+Prioridade de cada requisito em [requisitos.md](requisitos.md). **Must** garante a entrega, **Should** entra na v1.0.0 mas é o primeiro a ser cortado se o prazo apertar, e **Could** só entra se sobrar tempo.
 
-- Cadastro, login, logout, recuperação de senha e sessão (RF01–RF05).
+### Acesso (Must)
+
+- Cadastro, login, logout e sessão (RF01–RF03, RF05).
+- Recuperar senha (RF04) é Could: depende de serviço de e-mail.
 
 ### Atributos, hábitos e hobbies
 
-- Cadastro, edição e exclusão de atributos pessoais (RF17–RF20).
-- Cadastro, edição, exclusão, ativação e desativação de hábitos ligados a atributos (RF21–RF26).
-- Cadastro, edição, exclusão, ativação e desativação de hobbies ligados a atributos (RF27–RF32).
+- Cadastro, edição e exclusão de atributos pessoais, com cor e meta semanal (RF17–RF20, RF44). Must.
+- Cadastro, edição, exclusão, ativação e desativação de hábitos, com zero ou vários atributos (RF21–RF26). Must.
+- Cadastro, edição, exclusão, ativação e desativação de hobbies, com zero ou vários atributos (RF27–RF32). Should.
+- Criar hábito a partir de um hobby, herdando os atributos dele (RF51). Should.
+- Excluir um atributo é sempre permitido: ele só sai dos hábitos, hobbies e blocos (RN12).
 
-### Blocos semanais
+### Minha Semana
 
-- Criar bloco com ação, horário, dia da semana, atributo, hábito e descrição (RF07).
-- Editar e excluir bloco (RF08, RF09).
-- Trocar a semana exibida (RF10).
-- Realocar bloco arrastando para outro dia ou horário (RF11).
-- Filtrar a visualização por atributo e por hábito (RF12).
-- Bloco recorrente ficou de fora desta versão. Não está no diagrama de classes e ainda não tem requisito.
-- Modal de detalhes ao clicar num bloco está na visão do produto, como complemento de RF06–RF09.
+- Criar, editar e excluir bloco com ação, data, horário, atributos, hábito e descrição. Modal de detalhes (RF06–RF09). Must. Ao escolher um hábito, os atributos dele entram no bloco.
+- Marcar bloco como concluído (RF50). Must.
+- A grade é sempre uma semana. Por baixo, cada bloco guarda uma data, e arrastar o bloco para outro dia troca a data.
+- Trocar a semana exibida (RF10). Must.
+- Filtrar por atributo e por hábito (RF12). Should.
+- Arrastar bloco para outro dia ou horário (RF11). Should.
 
-### Tempo e metas
+### Dashboard e metas (Must)
 
-- Meta semanal de horas por atributo (RF44).
-- Tempo total, tempo por atributo e consistência no mês, com atualização ao trocar o mês (RF14–RF16).
-- Barra de progresso da meta semanal está na visão do produto e se apoia em RF16 e RF44.
+- Tempo feito (blocos concluídos) e planejado, total e por atributo, e consistência (concluídos ÷ blocos que já passaram), com troca de mês (RF13–RF16).
+- Barra de progresso da meta semanal e histórico de horas do atributo por semana.
 
-### Caderno
+### Caderno (Should)
 
-- Divisórias criadas pela pessoa (por exemplo Ideias, Java, Inglês) (RF37, RF38).
-- Criar, editar e excluir notas dentro das divisórias (RF35, RF36, RF39).
-- Acesso pela aba Caderno (RF33, RF34).
-- Tela cheia está na visão do produto.
-- Janela flutuante fica para uma versão futura e não entra nesta entrega.
+- Divisórias criadas pela pessoa (por exemplo Ideias, Java, Inglês), com notas dentro delas, e tela cheia (RF33–RF39).
 
 ### Perfil
 
-- Nome, e-mail e foto (RF41–RF43).
-- Metas semanais por atributo (RF44).
-- Início da semana, aparência claro/escuro, fuso horário e lembretes (RF45–RF48).
-- Salvar as alterações (RF49).
-
-### IA
-
-- A aba de IA aparece na visão do produto desde o início.
-- Ela não está nos requisitos funcionais. A decisão em aberto é se a primeira versão leva só a aba vazia ou se a aba fica fora até haver requisito.
+- Nome, e-mail, metas, início da semana, aparência e fuso horário (RF40–RF42, RF44–RF47, RF49). Should, exceto metas (Must).
+- Foto (RF43) e lembretes (RF48) são Could. A v1.0.0 só guarda a preferência de lembrete.
 
 ## Telas
 
-| Tela | Papel | Requisitos |
-| --- | --- | --- |
-| Minha Semana | Quadro semanal, tela principal | RF06–RF12 |
-| Dashboard | Visão mensal, tempo e consistência | RF13–RF16 |
-| Atributos | Listar, cadastrar, editar, excluir | RF17–RF20 |
-| Hábitos | Listar, cadastrar, editar, excluir, ativar, desativar | RF21–RF26 |
-| Hobby | Listar, cadastrar, editar, excluir, ativar, desativar | RF27–RF32 |
-| Detalhe do atributo | Histórico de horas por semana. Apoia o dashboard e as metas | RF16, RF44 |
-| Perfil | Dados pessoais, metas e preferências | RF40–RF49 |
-| Caderno | Divisórias e editor de texto | RF33–RF39 |
-| IA | Aba prevista. Sem requisito ainda | — |
+| Tela | Papel | Requisitos | Sprint (front) |
+| --- | --- | --- | --- |
+| Cadastro e login | Entrada | RF01–RF05 | S10 |
+| Atributos | Listar, cadastrar, editar, excluir | RF17–RF20 | S11 |
+| Hábitos | Listar, cadastrar, editar, excluir, ativar, desativar | RF21–RF26 | S11 |
+| Hobby | Listar, cadastrar, editar, excluir, ativar, desativar | RF27–RF32 | S11 |
+| Minha Semana | Quadro semanal, tela principal | RF06–RF12 | S12 (drag and drop na S14) |
+| Dashboard | Visão mensal, tempo e consistência | RF13–RF16 | S13 |
+| Detalhe do atributo | Histórico de horas por semana | RF16, RF44 | S13 |
+| Perfil | Dados pessoais, metas e preferências | RF40–RF49 | S13 |
+| Caderno | Divisórias e editor de texto | RF33–RF39 | S14 |
 
-Os protótipos dessas telas estão no Figma. A implementação segue o protótipo e os requisitos, não o menu de console.
+Os protótipos dessas telas estão no Figma. A aba de IA aparece no protótipo, mas não entra na v1.0.0.
 
 ## Metodologia
 
-Scrum simplificado, com sprints semanais. Carga de 6 horas por semana: segunda, terça, quarta e sexta, das 19:30 às 21:00.
+Scrum adaptado para uma pessoa, com sprints semanais de segunda a domingo. A carga horária de cada semana é definida pelo dev.
 
-- **Segunda, planning (10 min).** Meta da semana e tarefas da sprint no Trello.
-- **Sexta, review (10 min).** O que foi entregue e o que ficou pendente.
-- **Retrospectiva.** No fim de cada mês: o que travou e o que muda na fase seguinte.
-- **Regra de execução.** Sem commit, o dia não conta.
+- **Planning** na segunda, **daily** como comentário no card, **review** no fim da semana e **retrospectiva** no fim de cada mês.
+- Quadro no Trello: Product Backlog → Sprint Backlog → Em andamento → Em revisão → Concluído.
+- Definição de Preparado e Definição de Pronto, fluxo de branches, Pull Requests, Conventional Commits e versionamento semântico.
+- **Regra de execução:** sem commit, o dia não conta.
 
-O quadro das 16 semanas está no [cronograma](cronograma.md).
+Detalhes em [processo.md](processo.md).
 
 ## Stack
 
 Decisões e motivos em [Tech Stack](tech-stack.md).
 
-- **Engenharia:** Trello, draw.io, Figma, Postman.
-- **Back-end:** Java, Spring Boot, PostgreSQL, JPA, JUnit. Publicação no Railway.
-- **Front-end:** React. Publicação no Cloudflare Pages.
-- **Versionamento:** Git e GitHub.
+- **Engenharia:** Trello, draw.io (classes e fluxo), Mermaid (modelo de dados), Figma, Postman.
+- **Back-end:** Java 21, Spring Boot, Spring Security + JWT, PostgreSQL, JPA, Flyway, JUnit, Testcontainers. Publicação no Railway.
+- **Front-end:** React, Vite, TypeScript. Publicação no Cloudflare Pages.
+- **DevOps:** Git, GitHub, GitHub Actions (CI), deploy contínuo, Docker para o banco local.
 
 ## Status atual
 
-Data de referência: 24/11/2026. Semana 3 de 16. Fase atual: Engenharia.
+Data de referência: 24/11/2026. Sprint S03. Fase atual: Engenharia.
 
 | Entrega | Situação |
 | --- | --- |
-| Tema, repositório e entrada no Acelera Hub | Feito (semana 1) |
-| Tech stack | Feito (semana 2) |
-| Console em Java | Ensaio de aprendizado. Não é a base do produto |
+| Tema, repositório e entrada no Acelera Hub | Feito (S01) |
+| Tech stack | Feito (S02). Revisada em 24/11 com versões, ferramentas e decisões |
+| Console em Java | Ensaio de aprendizado. Sai da `main` na S05 |
 | Protótipo no Figma | Feito |
-| Requisitos funcionais e não funcionais | Feito, versão 0.1, 49 RF e 11 RNF |
-| Diagrama de fluxo | Feito. Inclui modal do bloco e histórico de horas do atributo |
-| Cronograma de 4 meses | Feito. Semanas 1 a 3 fechadas no que é engenharia de produto |
-| Diário de aprendizados | Em uso |
-| Documentação inicial | Esta versão |
-| Diagrama de classes no draw.io | Feito. Várias semanas com data, meta no atributo, perfil no usuário, bloco com zero ou mais atributos |
-| Trello com as sprints | Pendente (semana 4) |
-| Retrospectiva do mês 1 | Pendente (semana 4) |
-| README do repositório | Ainda é o texto padrão do Java no VS Code. A versão com o projeto entra na fase de finalização |
+| Requisitos | Versão 0.3, 51 RF com prioridade e sprint |
+| Diagrama de fluxo | v2 no draw.io (24/11) |
+| Diagrama de classes no draw.io | v2 (24/11): bloco com data, hábito e hobby com vários atributos, hobby origina hábito |
+| Trello com as sprints | Feito, no fluxo de Product Backlog e Sprint Backlog |
+| Cronograma | Versão 2.0, com 17 sprints até a release |
+| Regras de negócio | Validadas em 24/11 (RN01–RN37) |
+| Modelo de dados e contrato da API | Proposta escrita. Validar na S04 |
+| Processo (DoR, DoD, Git, CI/CD) | Escrito. Adotar a partir da S05 |
+| Retrospectiva do mês 1 | Pendente (S04) |
+| README do repositório | Versão mínima. A versão completa, com prints, entra na S15 |
 
 ## Antes de codar o Spring Boot
 
-A fase 2 começa em 07/12/2026. Até lá, a engenharia que ainda falta é esta:
+A S05 começa em 07/12/2026. Até lá, na S04:
 
-1. Escrever as regras de negócio que os requisitos ainda não detalham: campos obrigatórios, conflito de horário, cálculo de consistência e o que acontece ao excluir um atributo que já tem hábitos ou blocos. O diagrama já fixa três regras: o bloco pode ter zero ou mais atributos, a hora inteira conta para cada um deles, e bloco recorrente ficou de fora desta versão.
-2. Decidir a aba de IA: casca vazia nesta versão ou fora do escopo.
-3. Marcar no cronograma o que é entrega de 08/03 e o que é backlog. Os requisitos descrevem o produto inteiro. As sprints 5 a 14, como estão hoje, cobrem atributo, hábito, bloco e semana. Autenticação, hobby, caderno, dashboard e perfil precisam de um corte explícito: entram no prazo ou ficam para depois.
-4. Montar o Trello com as sprints e fechar a retrospectiva do mês 1.
-
-O diagrama de classes está alinhado. Sem as regras de negócio e sem esse corte de escopo, migrar o console para Spring Boot ainda começa cedo demais.
+1. Validar o [modelo de dados](diagramas/modelo-de-dados.md) e o [contrato da API](api.md).
+2. Instalar o ambiente: JDK 21, Docker Desktop, IDE, Node.js LTS e Postman.
+3. Fazer a retrospectiva do mês 1.
 
 ## Histórico
 
@@ -166,3 +160,5 @@ O diagrama de classes está alinhado. Sem as regras de negócio e sem esse corte
 | 0.2 | 2026-11-23 | Documento completo: produto, metodologia, stack, status da semana 3 e pendências antes do back-end. |
 | 0.3 | 2026-11-23 | Status do fluxo, do cronograma e do diagrama de classes alinhado ao que já foi feito. |
 | 0.4 | 2026-11-24 | Diagrama de classes fechado: semanas com data, meta, perfil e bloco com zero ou mais atributos. |
+| 0.5 | 2026-11-24 | Escopo da v1.0.0 com prioridades, aba de IA fora, novos documentos (regras, processo, API, modelo de dados), cronograma 2.0 e Trello em fluxo Scrum. |
+| 0.6 | 2026-11-24 | Regras validadas, RF50 e RF51, bloco com data, diagramas v2 no draw.io. |
