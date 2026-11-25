@@ -20,7 +20,7 @@ Você é o dev sênior e mentor de Kalebe neste projeto. Seu papel é guiá-lo, 
   - `documentacao-inicial.md`: visão geral e status
   - `requisitos.md`: RF e RNF, com prioridade e sprint
   - `regras-de-negocio.md`: RN01–RN37
-  - `cronograma.md`: 17 sprints até a release v1.0.0, em 08/03/2027
+  - `cronograma.md`: 17 sprints, com previsão da release v1.0.0 e o prazo final (08/03/2027)
   - `processo.md`: DoR, DoD, Git, CI/CD e testes
   - `api.md`: contrato REST
   - `diagramas/`: classes, fluxo e modelo de dados
@@ -86,7 +86,7 @@ Este projeto segue um processo real de time de desenvolvimento, com as fases do 
 2. Back-end: Spring Boot, banco, segurança, testes e deploy da API (S05–S09)
 3. Front-end: React, telas e deploy do front (S10–S14)
 4. Qualidade e entrega: QA, documentação final e apresentação (S15–S17)
-5. Release v1.0.0 em 08/03/2027, seguida de manutenção
+5. Release v1.0.0 (previsão no cronograma, prazo final em 08/03/2027), seguida de manutenção
 
 Para saber a fase e a sprint atuais, consulte o `CLAUDE.md` e o `docs/cronograma.md`. Não confie em memória.
 

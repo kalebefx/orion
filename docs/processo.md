@@ -99,7 +99,7 @@ Versionamento semântico, com tags no GitHub e notas de release:
 | `console-estudo` | S05, antes de remover o console |
 | `v0.1.0` | Fim da S09: API completa em produção |
 | `v0.2.0` | Fim da S14: front completo em produção |
-| `v1.0.0` | 08/03/2027 |
+| `v1.0.0` | Previsão em 22/02/2027 (prazo final: 08/03/2027) |
 
 ## 6. Ambientes e DevOps
 

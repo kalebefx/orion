@@ -34,7 +34,7 @@ Ficam de fora até serem especificados à parte (Won't nesta versão): painel ad
 - O identificador (RF01, RNF03) é a referência estável. Não reutilizar um identificador para outro assunto.
 - Itens ainda sem regra detalhada continuam válidos como capacidade. A regra entra depois, no mesmo identificador ou num requisito novo, sem apagar o histórico.
 - As regras que detalham cada requisito estão em [regras-de-negocio.md](regras-de-negocio.md) (RN01, RN02...).
-- **Prioridade (MoSCoW)** para a release v1.0.0 de 08/03/2027:
+- **Prioridade (MoSCoW)** para a release v1.0.0 (previsão em 22/02/2027, prazo final em 08/03/2027):
   - **Must**: sem isso o produto não é entregue.
   - **Should**: faz parte da v1.0.0, mas é o primeiro a ser cortado se o prazo apertar. O corte é registrado na review da sprint.
   - **Could**: só entra se sobrar tempo. Não tem sprint reservada.

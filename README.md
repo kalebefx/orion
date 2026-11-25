@@ -4,7 +4,7 @@ Sistema de gestão de rotina pessoal baseado em atributos. A pessoa cadastra atr
 
 Projeto de portfólio desenvolvido no Acelera Hub, do console ao fullstack.
 
-> **Status:** Fase 1 — Engenharia (sprint S04). O back-end em Spring Boot começa em 07/12/2026. Release v1.0.0 prevista para 08/03/2027.
+> **Status:** Fase 2 — Back-end (sprint S05, desde 25/11/2026). Release v1.0.0 prevista para 22/02/2027, com prazo final em 08/03/2027.
 
 ## Stack
 

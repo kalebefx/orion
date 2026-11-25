@@ -21,7 +21,7 @@ Contexto do projeto para qualquer sessão de desenvolvimento. Atualizado em 24/1
 
 Sistema de gestão de rotina pessoal baseado em atributos. A pessoa cadastra atributos (Saúde, Inteligência, Social...), cria hábitos e hobbies ligados a eles, organiza a semana em blocos de tempo, acompanha tempo e metas por atributo e usa um caderno de notas. Cada usuário vê só os próprios dados. Uso no navegador, desktop e celular.
 
-Portfólio técnico no Acelera Hub. **Release v1.0.0: 08/03/2027.**
+Portfólio técnico no Acelera Hub. **Release v1.0.0: previsão em 22/02/2027, prazo final em 08/03/2027.**
 
 Fora da v1.0.0: aba de IA (decidido em 24/11), painel admin, compartilhamento, calendários externos, app nativo, bloco recorrente, janela flutuante do caderno. Could (só se sobrar tempo): recuperar senha (RF04), foto (RF43), envio de lembretes (RF48).
 
@@ -109,46 +109,52 @@ Regras-chave:
 
 ---
 
-## Cronograma (resumo)
+## Cronograma (resumo · v3.0 de 25/11/2026)
+
+A engenharia terminou antes. A S05 começou em 25/11, e as sprints seguintes foram antecipadas em 2 semanas. As datas são **previsão**. O **prazo final (08/03/2027) não muda**.
 
 | Sprint | Período | Entrega |
 |---|---|---|
-| S01–S03 | 09/11–29/11 | Engenharia ✔️ (Figma, requisitos, diagramas, Trello) |
-| **S04** | 30/11–06/12 | Validar regras, dados e API. Ambiente. Retrospectiva do mês 1 |
-| S05 | 07/12–13/12 | Spring Boot, PostgreSQL local, Flyway, CI, Swagger, API de Atributos |
-| S06 | 14/12–20/12 | JWT, isolamento por usuário, API de Hábitos |
-| S07 | 21/12–27/12 | API de Hobbies e Perfil (Natal) |
-| S08 | 28/12–03/01 | API de Blocos com data e concluído (Ano Novo) |
-| S09 | 04/01–10/01 | Estatísticas, Caderno, deploy no Railway, `v0.1.0`, retrospectiva |
-| S10 | 11/01–17/01 | React, CI/CD do front, login |
-| S11 | 18/01–24/01 | Telas de Atributos, Hábitos e Hobby |
-| S12 | 25/01–31/01 | Minha Semana e filtros |
-| S13 | 01/02–07/02 | Dashboard e Perfil |
-| S14 | 08/02–14/02 | Caderno, drag and drop, `v0.2.0`, retrospectiva |
-| S15 | 15/02–21/02 | QA, backup, monitoramento, README (Carnaval) |
-| S16 | 22/02–28/02 | Documentação final, apresentação, LinkedIn |
-| S17 | 01/03–07/03 | Buffer, escopo congelado, retrospectiva final |
-| 🎯 | 08/03/2027 | `v1.0.0` |
+| S01–S04 | 09/11–25/11 | Engenharia ✔️ (Figma, requisitos, regras, diagramas, dados, API, processo, Trello, ambiente, retrospectiva) |
+| **S05** | 25/11–29/11 (curta) | Spring Boot, PostgreSQL local, Flyway, CI, proteção da `main`, Swagger, API de Atributos |
+| S06 | 30/11–06/12 | JWT, isolamento por usuário, API de Hábitos |
+| S07 | 07/12–13/12 | API de Hobbies (e hábito a partir do hobby) e Perfil |
+| S08 | 14/12–20/12 | API de Blocos com data e concluído |
+| S09 | 21/12–27/12 (Natal) | Estatísticas, Caderno, conta e deploy no Railway, `v0.1.0`, retrospectiva |
+| S10 | 28/12–03/01 (Ano Novo) | React, conta e CI/CD no Cloudflare, login |
+| S11 | 04/01–10/01 | Telas de Atributos, Hábitos e Hobby |
+| S12 | 11/01–17/01 | Minha Semana, concluído e filtros |
+| S13 | 18/01–24/01 | Dashboard e Perfil |
+| S14 | 25/01–31/01 | Caderno, drag and drop, `v0.2.0`, retrospectiva |
+| S15 | 01/02–07/02 | QA, backup, monitoramento, README |
+| S16 | 08/02–14/02 (Carnaval) | Documentação final, apresentação, LinkedIn |
+| S17 | 15/02–21/02 | Buffer, escopo congelado, retrospectiva final |
+| 🎯 Previsão | 22/02/2027 | `v1.0.0` |
+| ⏰ Prazo final | 08/03/2027 | Limite fixo |
 
 ---
 
-## Status atual (24/11/2026 · S03 · Fase 1)
+## Status atual (25/11/2026 · S05 · Fase 2 — Back-end)
 
-### Concluído
-- [x] Repositório, Acelera Hub, tech stack, documentação inicial (v0.5)
-- [x] Figma, requisitos v0.2, diagrama de fluxo, diagrama de classes
-- [x] Trello reestruturado no fluxo Scrum: Referência, Product Backlog, Sprint Backlog, Em andamento, Em revisão, Concluído, Fora da v1.0.0
-- [x] Cronograma 2.0, processo, rascunhos de regras de negócio, modelo de dados e API
-- [x] `.gitignore` e `bin/` fora do Git (falta commitar)
+### Fase 1 concluída (S01–S04)
+- [x] Repositório, Acelera Hub, tech stack, documentação inicial
+- [x] Figma, requisitos v0.3 (RF01–RF51), regras RN01–RN37 validadas
+- [x] Diagramas de classes e de fluxo v2 no draw.io. Modelo de dados e API validados (25/11)
+- [x] Trello no fluxo Scrum. Cronograma v3.0. Processo (DoR, DoD, Git, CI/CD)
+- [x] Ambiente: JDK 21, PostgreSQL 17 (porta 5432), Postman, Extension Pack for Java no VS Code. Docker fora do projeto
+- [x] Retrospectiva do mês 1 (respostas a registrar no card do Trello)
 
-### Pendente na S04 (até 06/12)
-- [x] Regras de negócio validadas (24/11). Diagramas de classes e de fluxo v2 no draw.io
-- [x] Modelo de dados e contrato da API validados (25/11)
-- [ ] Validar escopo MoSCoW e cronograma 2.0
-- [x] JDK 21, Postman e PostgreSQL 17 instalados (25/11). Docker fora do projeto
-- [ ] Criar contas no Railway e no Cloudflare. Proteger a `main`
-- [ ] Retrospectiva do mês 1 (Começar / Parar / Continuar)
-- [ ] Commit e push das mudanças de documentação
+### Movido para mais tarde
+- Contas no Railway (S09) e no Cloudflare (S10)
+- Proteção da `main` no GitHub (S05, junto com o CI)
+
+### S05 em andamento (25/11–29/11)
+- [ ] Tag `console-estudo` e remover o console da `main`
+- [ ] Projeto Spring Boot em `backend/`
+- [ ] PostgreSQL local (`orion` e `orion_test`), profiles e Flyway
+- [ ] CI no GitHub Actions e proteção da `main`
+- [ ] Swagger, erros globais e `/health`
+- [ ] API de Atributos
 
 ---
 
@@ -164,3 +170,4 @@ Regras-chave:
 | 24/11/2026 | Consistência = blocos concluídos ÷ blocos que já terminaram. Tempo feito × planejado. RF50 e RF51 |
 | 24/11/2026 | Diagramas de classes e de fluxo em draw.io (`.drawio` + PNG) |
 | 25/11/2026 | Sem Docker: PostgreSQL instalado no Windows e banco `orion_test` para testes de integração |
+| 25/11/2026 | Engenharia concluída antes. S05 começa em 25/11, sprints antecipadas em 2 semanas. Previsão da release em 22/02/2027, prazo final mantido em 08/03/2027 |

@@ -17,7 +17,7 @@ Documento de entrada do projeto. Ele descreve o produto, a forma de trabalhar e 
 | [Requisitos](requisitos.md) | O que o sistema deve fazer (RF01–RF51), com que qualidade (RNF01–RNF11), prioridade e sprint de cada um |
 | [Regras de negócio](regras-de-negocio.md) | Como cada requisito se comporta (RN01–RN37) |
 | [Tech Stack](tech-stack.md) | Ferramentas escolhidas, o motivo de cada uma e o registro de decisões |
-| [Cronograma](cronograma.md) | 17 sprints, de 09/11/2026 à release de 08/03/2027 |
+| [Cronograma](cronograma.md) | 17 sprints, com previsão da release em 22/02/2027 e prazo final em 08/03/2027 |
 | [Processo](processo.md) | Scrum adaptado, Trello, DoR, DoD, Git, CI/CD, ambientes e testes |
 | [Contrato da API](api.md) | Endpoints REST, formato de erro e convenções |
 | [Diagrama de fluxo](diagramas/diagrama-de-fluxo.md) | Caminho do usuário autenticado pelas abas (draw.io) |
@@ -44,7 +44,7 @@ Orion é um sistema de gestão de rotina pessoal baseado em atributos. A pessoa 
 
 Cada pessoa autenticada vê e altera apenas os próprios dados. O uso é no navegador, no desktop e no celular.
 
-O projeto é desenvolvido no Acelera Hub como portfólio técnico, do console ao fullstack. A release v1.0.0 é em 08/03/2027.
+O projeto é desenvolvido no Acelera Hub como portfólio técnico, do console ao fullstack. A release v1.0.0 está prevista para 22/02/2027, e o prazo final é 08/03/2027.
 
 Ficam de fora da v1.0.0: aba de IA, painel administrativo, compartilhamento de rotina entre usuários, integração com calendários externos, aplicativo nativo, bloco recorrente e janela flutuante do caderno.
 
@@ -126,7 +126,7 @@ Decisões e motivos em [Tech Stack](tech-stack.md).
 
 ## Status atual
 
-Data de referência: 24/11/2026. Sprint S03. Fase atual: Engenharia.
+Data de referência: 25/11/2026. Sprint S05. Fase atual: Back-end. A engenharia terminou antes do previsto, e o cronograma foi antecipado em 2 semanas.
 
 | Entrega | Situação |
 | --- | --- |
@@ -138,19 +138,16 @@ Data de referência: 24/11/2026. Sprint S03. Fase atual: Engenharia.
 | Diagrama de fluxo | v2 no draw.io (24/11) |
 | Diagrama de classes no draw.io | v2 (24/11): bloco com data, hábito e hobby com vários atributos, hobby origina hábito |
 | Trello com as sprints | Feito, no fluxo de Product Backlog e Sprint Backlog |
-| Cronograma | Versão 2.0, com 17 sprints até a release |
+| Cronograma | Versão 3.0, antecipado em 2 semanas |
 | Regras de negócio | Validadas em 24/11 (RN01–RN37) |
 | Modelo de dados e contrato da API | Validados em 25/11 |
-| Processo (DoR, DoD, Git, CI/CD) | Escrito. Adotar a partir da S05 |
-| Retrospectiva do mês 1 | Pendente (S04) |
+| Processo (DoR, DoD, Git, CI/CD) | Em uso a partir da S05 |
+| Retrospectiva do mês 1 | Feita (25/11) |
 | README do repositório | Versão mínima. A versão completa, com prints, entra na S15 |
 
-## Antes de codar o Spring Boot
+## Próximo passo
 
-A S05 começa em 07/12/2026. Até lá, na S04:
-
-1. Instalar o Extension Pack for Java no VS Code ou no Cursor. JDK 21, PostgreSQL 17 e Postman já foram instalados em 25/11.
-2. Fazer a retrospectiva do mês 1.
+A engenharia está concluída, e o ambiente está pronto (JDK 21, PostgreSQL 17, Postman e VS Code com o Extension Pack for Java). A S05 começou em 25/11: arquivar o console e criar o projeto Spring Boot em `backend/`. As contas no Railway e no Cloudflare ficam para a S09 e a S10.
 
 ## Histórico
 
@@ -161,3 +158,4 @@ A S05 começa em 07/12/2026. Até lá, na S04:
 | 0.4 | 2026-11-24 | Diagrama de classes fechado: semanas com data, meta, perfil e bloco com zero ou mais atributos. |
 | 0.5 | 2026-11-24 | Escopo da v1.0.0 com prioridades, aba de IA fora, novos documentos (regras, processo, API, modelo de dados), cronograma 2.0 e Trello em fluxo Scrum. |
 | 0.6 | 2026-11-24 | Regras validadas, RF50 e RF51, bloco com data, diagramas v2 no draw.io. |
+| 0.7 | 2026-11-25 | Fase 1 concluída, cronograma v3.0 antecipado, previsão em 22/02/2027 e prazo final em 08/03/2027. |
