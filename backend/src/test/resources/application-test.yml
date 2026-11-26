@@ -1,0 +1,6 @@
+# Testes de integração: banco "orion_test" local (no CI, o serviço PostgreSQL do GitHub Actions).
+spring:
+  datasource:
+    url: ${TEST_DB_URL:jdbc:postgresql://localhost:5432/orion_test}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD}

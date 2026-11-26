@@ -1,0 +1,8 @@
+# Desenvolvimento local: PostgreSQL 17 instalado no Windows, banco "orion".
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/orion}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD}
+  jpa:
+    show-sql: true
