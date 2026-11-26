@@ -1,0 +1,23 @@
+# Configuração comum a todos os ambientes.
+# Segredos nunca ficam aqui: vêm de variáveis de ambiente ou do arquivo .env (fora do Git).
+spring:
+  application:
+    name: orion
+  profiles:
+    default: dev
+  config:
+    import: optional:file:.env[.properties]
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate   # quem cria e altera tabelas é o Flyway, nunca o Hibernate
+  flyway:
+    locations: classpath:db/migration
+
+server:
+  servlet:
+    context-path: /api/v1
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

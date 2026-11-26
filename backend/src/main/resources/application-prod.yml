@@ -1,0 +1,9 @@
+# Produção (Railway, S09). Todas as variáveis são definidas no painel do Railway.
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+springdoc:
+  swagger-ui:
+    enabled: false
