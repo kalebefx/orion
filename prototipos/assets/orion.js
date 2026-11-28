@@ -17,8 +17,12 @@ const mondayOf = d => { const x = new Date(d.getFullYear(), d.getMonth(), d.getD
 const nomeDia = d => DIAS[(d.getDay()+6)%7];
 const fmtMin = m => `${pad(Math.floor(m/60))}:${pad(m%60)}`;
 const fmtDur = m => { m = Math.round(m); const h = Math.floor(m/60), r = m%60; return r ? `${h}h${pad(r)}` : `${h}h`; };
-const startOf = b => new Date(+parseIso(b.data) + b.ini*60000);
-const endOf   = b => new Date(+parseIso(b.data) + b.fim*60000);
+// bloco sem horário (proposta do modo lista, ainda fora dos docs): começa às 00:00 e termina no fim do dia
+const semHorario = b => b.ini == null;
+const startOf = b => new Date(+parseIso(b.data) + (semHorario(b) ? 0 : b.ini)*60000);
+const endOf   = b => new Date(+parseIso(b.data) + (semHorario(b) ? 1440 : b.fim)*60000);
+const duracao = b => semHorario(b) ? 0 : b.fim - b.ini; // sem horário não soma tempo (RN26 provisória)
+const ordemDe = b => b.ordem ?? b.ini ?? 0;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const $ = id => document.getElementById(id);
 
@@ -69,16 +73,16 @@ const NOTAS = [
 ];
 
 /* perfil (RN33: valores padrão) */
-const PERFIL = {nome:'Kalebe', email:'kalebe@exemplo.com', inicioSemana:1, aparencia:'claro', fuso:'America/Sao_Paulo', lembretes:false};
+const PERFIL = {nome:'Kalebe', email:'kalebe@exemplo.com', inicioSemana:1, aparencia:'claro', fuso:'America/Sao_Paulo', lembretes:false, visualizacao:'grade'}; // visualizacao: proposta, fora dos docs
 
 /* rotina-modelo por dia da semana (0 = seg): [início h, fim h, ação, hábito, atributos] */
 const ROTINA = [
-  [[6.5,7.5,'Treino de força',2,[4,1]],[8,9,'Ler 30 páginas',1,[2]],[19,21,'API de Atributos',5,[2]]],
-  [[7,7.25,'Meditar',3,[1]],[9,12,'Faculdade',null,[2,3]],[20,21,'Praticar acordes',4,[5]]],
+  [[6.5,7.5,'Treino de força',2,[4,1]],[8,9,'Ler 30 páginas',1,[2]],[19,21,'API de Atributos',5,[2]],[null,null,'Responder e-mails',null,[3]]],
+  [[7,7.25,'Meditar',3,[1]],[9,12,'Faculdade',null,[2,3]],[20,21,'Praticar acordes',4,[5]],[null,null,'Beber 2 L de água',null,[1]]],
   [[6.5,7.5,'Treino de força',2,[4,1]],[18.5,20.5,'Spring Boot + Flyway',5,[2]]],
-  [[7,7.25,'Meditar',3,[1]],[12,13,'Almoço com a família',null,[3]],[19,21,'CI no GitHub Actions',5,[2]]],
+  [[7,7.25,'Meditar',3,[1]],[12,13,'Almoço com a família',null,[3]],[19,21,'CI no GitHub Actions',5,[2]],[null,null,'Ligar para a vó',null,[3]]],
   [[6.5,7.5,'Treino de força',2,[4,1]],[8,9,'Ler 30 páginas',1,[2]],[19,20.5,'Testes RN21',5,[2]]],
-  [[10,12,'Trilha no parque',null,[4,3,1]],[15,16,'Gravar cover',4,[5]]],
+  [[10,12,'Trilha no parque',null,[4,3,1]],[15,16,'Gravar cover',4,[5]],[null,null,'Arrumar o quarto',null,[1]],[null,null,'Lavar roupa',null,[]]],
   [[9,10,'Planejar a semana',null,[2]],[16,18,'Encontro com amigos',null,[3]]],
 ];
 
@@ -97,10 +101,10 @@ function garantirPeriodo(de, ate){
     _gerados.add(k);
     ROTINA[(d.getDay()+6)%7].forEach(([i,f,acao,hab,attrs], n) => {
       if (rnd(k+n+'x') < 0.12) return; // às vezes o bloco não foi planejado
-      if (BLOCOS.some(o => o.data === k && i*60 < o.fim && o.ini < f*60)) return; // não gera por cima de um bloco seu (RN21)
+      if (i != null && BLOCOS.some(o => o.data === k && !semHorario(o) && i*60 < o.fim && o.ini < f*60)) return; // não gera por cima de um bloco seu (RN21)
       if (hab && !habById(hab)) hab = null; // hábito excluído
       attrs = attrs.filter(attrById);       // atributo excluído
-      const b = {id:_seq++, data:k, ini:i*60, fim:f*60, acao, habito:hab, attrs:[...attrs], desc:'', concluido:false};
+      const b = {id:_seq++, data:k, ini:i == null ? null : i*60, fim:f == null ? null : f*60, ordem:n*10, acao, habito:hab, attrs:[...attrs], desc:'', concluido:false};
       if (endOf(b) <= agora && rnd(k+n+'c') < 0.76) b.concluido = true; // RN37: só o que já começou
       BLOCOS.push(b);
     });
@@ -111,7 +115,7 @@ const blocosEntre = (de, ate) => { garantirPeriodo(de, ate); const a = iso(de), 
 /* ---------- persistência (só do protótipo; no produto isso é a API) ----------
    Salva tudo ao sair da página e carrega ao abrir. Assim, um hábito criado
    em Hábitos aparece na Minha Semana. */
-const CHAVE = 'orion.prototipo.v1';
+const CHAVE = 'orion.prototipo.v2'; // v2: blocos sem horário e ordem
 const _troca = (arr, novo) => { if (Array.isArray(novo)) arr.splice(0, arr.length, ...novo); };
 let _naoSalvar = false;
 function salvar(){
@@ -160,7 +164,7 @@ function estouro(x, y, cor = '#456C9C'){
 /* ---------- estatísticas (RN25, RN26, RN28) ---------- */
 function estatisticas(lista, attrId){
   const L = attrId ? lista.filter(b => b.attrs.includes(attrId)) : lista; // RN25: bloco conta inteiro para cada atributo
-  const dur = b => b.fim - b.ini;
+  const dur = duracao;
   const agora = new Date();
   const terminados = L.filter(b => endOf(b) <= agora);
   return {
@@ -204,6 +208,30 @@ function montarTopbar(atual){
         <button role="menuitem" class="sair" id="sair">Sair</button>
       </div>
     </div>`;
+  // celular: barra inferior com 5 itens (limite recomendado) e "Mais" numa gaveta
+  const PRINC = ['semana','dashboard','habitos','caderno'], CURTO = {semana:'Semana', dashboard:'Painel', habitos:'Hábitos', caderno:'Caderno'};
+  const item = k => NAV.find(n => n[0] === k);
+  const noMais = !PRINC.includes(atual);
+  document.querySelector('.tabbar')?.remove(); document.querySelector('.sheet-bg')?.remove();
+  document.body.insertAdjacentHTML('beforeend', `
+    <nav class="tabbar" aria-label="Navegação principal">${PRINC.map(k => { const n = item(k);
+      return `<a href="${n[2]}" class="${k===atual?'on':''}" ${k===atual?'aria-current="page"':''}>${n[3]}<span>${CURTO[k]}</span></a>`; }).join('')}
+      <button id="maisBtn" class="${noMais?'on':''}" aria-haspopup="dialog" aria-expanded="false">${I('<circle cx="5" cy="12" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="19" cy="12" r="1.6" fill="currentColor"/>')}<span>${noMais ? item(atual)?.[1] || 'Mais' : 'Mais'}</span></button>
+    </nav>
+    <div class="sheet-bg" id="sheetBg" hidden><div class="sheet" role="dialog" aria-label="Mais opções">
+      <span class="grip" aria-hidden="true"></span>
+      ${['atributos','hobby','perfil'].map(k => { const n = item(k); return `<a href="${n[2]}" class="${k===atual?'on':''}">${n[3]}<span>${n[1]}</span><i>›</i></a>`; }).join('')}
+      <div class="sheet-sep"></div>
+      <button id="sheetTema">${I('<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/>')}<span>${PERFIL.aparencia === 'escuro' ? 'Tema claro' : 'Tema escuro'}</span></button>
+      <button id="sheetSair" class="sair">${I('<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/>')}<span>Sair</span></button>
+    </div></div>`);
+  const sheetBg = $('sheetBg');
+  const sheet = v => { sheetBg.hidden = !v; $('maisBtn').setAttribute('aria-expanded', v); if (v) requestAnimationFrame(() => sheetBg.classList.add('open')); else sheetBg.classList.remove('open'); };
+  $('maisBtn').onclick = () => sheet(sheetBg.hidden);
+  sheetBg.onclick = e => { if (e.target === sheetBg) sheet(false); };
+  $('sheetTema').onclick = () => { $('temaRapido').click(); sheet(false); };
+  $('sheetSair').onclick = () => $('sair').click();
+
   el.querySelectorAll('[data-soon]').forEach(a => a.onclick = e => { e.preventDefault(); toast('Protótipo desta tela ainda não foi feito'); });
 
   // menu da conta: logout (RF03 · RN07) e troca rápida de tema
