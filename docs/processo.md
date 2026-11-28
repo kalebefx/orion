@@ -38,7 +38,7 @@ Um card só entra no Sprint Backlog quando:
 - [ ] Cita os RF que atende e as RN que se aplicam
 - [ ] Tem critérios de aceite verificáveis
 - [ ] O endpoint está no [contrato da API](api.md), se for back-end
-- [ ] A tela está no Figma, se for front-end
+- [ ] A tela está nos protótipos (`prototipos/`), se for front-end
 - [ ] Cabe em uma sprint. Se não couber, é dividido
 
 ## 4. Definição de Pronto (DoD)
@@ -49,7 +49,7 @@ Um card só vai para Concluído quando:
 - [ ] O CI está verde (build e testes)
 - [ ] As regras de negócio do card têm teste automático (back-end)
 - [ ] O endpoint aparece no Swagger e na coleção do Postman (back-end)
-- [ ] A tela segue o Figma e funciona no celular (front-end)
+- [ ] A tela segue o protótipo e funciona no celular (front-end)
 - [ ] Está publicado em produção (a partir da S09 no back e da S10 no front)
 - [ ] A documentação afetada foi atualizada (requisitos, regras, API, CLAUDE.md)
 

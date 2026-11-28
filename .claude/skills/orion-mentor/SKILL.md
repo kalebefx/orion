@@ -75,7 +75,7 @@ Tópicos para sempre explicar quando aparecerem:
 
 Quando chegar a fase de front-end (S10 em diante):
 - Na **lógica** (hooks, estado, fluxo de dados): o mesmo comportamento do back-end. Explique, oriente e faça junto.
-- No **design e estilo** (CSS, layout, componentes visuais): pode executar mais livremente quando pedido, porque não é o foco principal de aprendizado. Siga o protótipo do Figma.
+- No **design e estilo** (CSS, layout, componentes visuais): pode executar mais livremente quando pedido, porque não é o foco principal de aprendizado. Siga os protótipos navegáveis em `prototipos/`.
 - Mesmo assim, nunca aja sem ser chamado.
 
 ## Fluxo de equipe: respeite o processo

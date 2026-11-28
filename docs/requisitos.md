@@ -158,7 +158,7 @@ Ficam de fora até serem especificados à parte (Won't nesta versão): painel ad
 
 | ID | Como atender | Como verificar | Sprint |
 | --- | --- | --- | --- |
-| RNF01 | Seguir o protótipo do Figma | Teste de uso ponta a ponta | S15 |
+| RNF01 | Seguir os protótipos navegáveis (`prototipos/`) | Teste de uso ponta a ponta | S15 |
 | RNF02 | Paginação nas listas grandes, índices no banco | Lighthouse e aba Network do navegador | S15 |
 | RNF03 | BCrypt nas senhas, JWT, filtro por usuário em toda consulta | Testes de integração tentando acessar dado de outro usuário | S06 |
 | RNF04 | Front sem APIs exclusivas de um navegador | Teste manual em Chrome, Edge, Firefox e Safari (iOS) | S15 |

@@ -33,7 +33,7 @@ O console em `src/` foi um ensaio feito antes da engenharia. Ele serviu para apr
 
 Ordem de trabalho:
 
-1. Produto e protótipo (Figma).
+1. Produto e protótipos navegáveis (HTML, em `prototipos/`).
 2. Requisitos e regras de negócio.
 3. Diagramas, modelo de dados e contrato da API.
 4. Só então Spring Boot, banco, testes, React e publicação.
@@ -102,7 +102,7 @@ Prioridade de cada requisito em [requisitos.md](requisitos.md). **Must** garante
 | Perfil | Dados pessoais, metas e preferências | RF40–RF49 | S13 |
 | Caderno | Divisórias e editor de texto | RF33–RF39 | S14 |
 
-Os protótipos dessas telas estão no Figma. A aba de IA aparece no protótipo, mas não entra na v1.0.0.
+Os protótipos dessas telas estão em [`prototipos/`](../prototipos/): páginas em HTML, CSS e JS puro que dá para abrir e navegar no navegador, com tema claro e escuro e versão para celular. Foram feitos com o Claude Code, usando skills de UI/UX, no lugar do Figma. A aba de IA não entra na v1.0.0.
 
 ## Metodologia
 
@@ -119,7 +119,7 @@ Detalhes em [processo.md](processo.md).
 
 Decisões e motivos em [Tech Stack](tech-stack.md).
 
-- **Engenharia:** Trello, draw.io (classes e fluxo), Mermaid (modelo de dados), Figma, Postman.
+- **Engenharia:** Trello, draw.io (classes e fluxo), Mermaid (modelo de dados), protótipos em HTML, Postman.
 - **Back-end:** Java 21, Spring Boot, Spring Security + JWT, PostgreSQL, JPA, Flyway, JUnit. Publicação no Railway.
 - **Front-end:** React, Vite, TypeScript. Publicação no Cloudflare Pages.
 - **DevOps:** Git, GitHub, GitHub Actions (CI), deploy contínuo, PostgreSQL instalado localmente (sem Docker).
@@ -133,7 +133,7 @@ Data de referência: 25/11/2026. Sprint S05. Fase atual: Back-end. A engenharia 
 | Tema, repositório e entrada no Acelera Hub | Feito (S01) |
 | Tech stack | Feito (S02). Revisada em 24/11 com versões, ferramentas e decisões |
 | Console em Java | Ensaio de aprendizado. Sai da `main` na S05 |
-| Protótipo no Figma | Feito |
+| Protótipos navegáveis (HTML, `prototipos/`) | Feito |
 | Requisitos | Versão 0.3, 51 RF com prioridade e sprint |
 | Diagrama de fluxo | v2 no draw.io (24/11) |
 | Diagrama de classes no draw.io | v2 (24/11): bloco com data, hábito e hobby com vários atributos, hobby origina hábito |

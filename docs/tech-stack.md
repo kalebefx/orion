@@ -7,7 +7,7 @@ Decisões técnicas do Orion e o motivo de cada uma. Uma decisão nova ou uma tr
 - **Trello**: quadro de sprints. Visual, gratuito e muito usado no mercado para organizar tarefas em metodologia ágil. O fluxo está em [processo.md](processo.md).
 - **draw.io**: diagrama de classes e diagrama de fluxo. Gratuito e profissional. O arquivo `.drawio` fica no repositório, junto com o PNG exportado para o GitHub mostrar.
 - **Mermaid**: modelo de dados (ER), escrito em texto dentro do Markdown. O GitHub desenha sozinho e as mudanças aparecem no diff.
-- **Figma**: protótipo das telas antes de construir o front. É o padrão do mercado e evita retrabalho, como aconteceu no projeto do salão.
+- **Protótipos navegáveis em HTML** (`prototipos/`): as telas foram prototipadas antes de construir o front, feitas com o Claude Code usando skills de UI/UX. Substituem o Figma: dá para clicar, testar o tema e o celular no navegador, e evitam retrabalho, como aconteceu no projeto do salão.
 
 ## Back-end
 

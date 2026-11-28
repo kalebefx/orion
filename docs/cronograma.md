@@ -51,7 +51,7 @@ Princípios do plano:
 
 ### S03 — 23/11 → 25/11 ✔️
 
-- Protótipo no Figma
+- Protótipos navegáveis das telas em HTML (`prototipos/`), feitos com o Claude Code usando skills de UI/UX
 - Requisitos funcionais e não funcionais
 - Diagrama de classes (draw.io)
 - Diagrama de fluxo
@@ -115,7 +115,7 @@ Objetivo: API REST completa, segura, testada e publicada.
 
 ## Fase 3 — Front-end (S10–S14)
 
-Objetivo: interface React fiel ao Figma, conectada à API e publicada.
+Objetivo: interface React fiel aos protótipos (`prototipos/`), conectada à API e publicada.
 
 ### S10 — 28/12 → 03/01 · Fundação do front · Ano Novo (semana reduzida)
 

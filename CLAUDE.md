@@ -42,6 +42,7 @@ Fora da v1.0.0: aba de IA (decidido em 24/11), painel admin, compartilhamento, c
 | `diagramas/diagrama-de-classes.md` + `.drawio` + `.png` | Domínio v2 (draw.io) |
 | `diagramas/modelo-de-dados.md` | ER em Mermaid, restrições, cascatas. Validado em 25/11 |
 | `aprendizados.md` | Diário de estudo de Java |
+| `../prototipos/` | Protótipos navegáveis das 8 telas da v1.0.0 (HTML, CSS e JS), referência visual do front |
 
 ---
 
@@ -50,7 +51,7 @@ Fora da v1.0.0: aba de IA (decidido em 24/11), painel admin, compartilhamento, c
 - **Back-end:** Java 21 (alvo; a máquina tem o JDK 26), Spring Boot, Maven, Spring Web, Data JPA, Bean Validation, Spring Security + JWT, PostgreSQL, Flyway, springdoc-openapi, JUnit 5, Mockito. Testes de integração no banco `orion_test` do PostgreSQL local.
 - **Front-end:** React + Vite + TypeScript, React Router, TanStack Query, dnd-kit, Recharts, TipTap, Vitest, ESLint e Prettier.
 - **DevOps:** Git e GitHub (`kalebefx/orion`), GitHub Actions (CI, com serviço PostgreSQL), PostgreSQL 17 instalado no Windows (sem Docker), Railway (API e banco), Cloudflare Pages (front), monitor de uptime.
-- **Engenharia:** Trello, Figma, draw.io, Mermaid, Postman.
+- **Engenharia:** Trello, protótipos em HTML (feitos com o Claude Code e skills de UI/UX), draw.io, Mermaid, Postman.
 
 Ambiente na máquina (25/11): JDK 21 (Temurin) e Java 26, Maven 3.9, Node 24, git, Postman, PostgreSQL 17.12 (serviço `postgresql-x64-17`, porta padrão 5432, senha do `postgres` testada; o 18 antigo foi removido). Sem Docker, por decisão de 25/11. O `gh` CLI não está instalado.
 
@@ -115,7 +116,7 @@ A engenharia terminou antes. A S05 começou em 25/11, e as sprints seguintes for
 
 | Sprint | Período | Entrega |
 |---|---|---|
-| S01–S04 | 09/11–25/11 | Engenharia ✔️ (Figma, requisitos, regras, diagramas, dados, API, processo, Trello, ambiente, retrospectiva) |
+| S01–S04 | 09/11–25/11 | Engenharia ✔️ (protótipos, requisitos, regras, diagramas, dados, API, processo, Trello, ambiente, retrospectiva) |
 | **S05** | 25/11–29/11 (curta) | Spring Boot, PostgreSQL local, Flyway, CI, proteção da `main`, Swagger, API de Atributos |
 | S06 | 30/11–06/12 | JWT, isolamento por usuário, API de Hábitos |
 | S07 | 07/12–13/12 | API de Hobbies (e hábito a partir do hobby) e Perfil |
@@ -138,7 +139,7 @@ A engenharia terminou antes. A S05 começou em 25/11, e as sprints seguintes for
 
 ### Fase 1 concluída (S01–S04)
 - [x] Repositório, Acelera Hub, tech stack, documentação inicial
-- [x] Figma, requisitos v0.3 (RF01–RF51), regras RN01–RN37 validadas
+- [x] Protótipos navegáveis em `prototipos/`, requisitos v0.3 (RF01–RF51), regras RN01–RN37 validadas
 - [x] Diagramas de classes e de fluxo v2 no draw.io. Modelo de dados e API validados (25/11)
 - [x] Trello no fluxo Scrum. Cronograma v3.0. Processo (DoR, DoD, Git, CI/CD)
 - [x] Ambiente: JDK 21, PostgreSQL 17 (porta 5432), Postman, Extension Pack for Java no VS Code. Docker fora do projeto
@@ -171,3 +172,4 @@ A engenharia terminou antes. A S05 começou em 25/11, e as sprints seguintes for
 | 24/11/2026 | Diagramas de classes e de fluxo em draw.io (`.drawio` + PNG) |
 | 25/11/2026 | Sem Docker: PostgreSQL instalado no Windows e banco `orion_test` para testes de integração |
 | 25/11/2026 | Engenharia concluída antes. S05 começa em 25/11, sprints antecipadas em 2 semanas. Previsão da release em 22/02/2027, prazo final mantido em 08/03/2027 |
+| 27/11/2026 | Protótipos das telas feitos em HTML, CSS e JS (`prototipos/`) com o Claude Code e skills de UI/UX, no lugar do Figma |
