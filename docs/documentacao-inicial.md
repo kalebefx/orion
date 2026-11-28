@@ -8,7 +8,7 @@ Documento de entrada do projeto. Ele descreve o produto, a forma de trabalhar e 
 | Documento | Documentação inicial |
 | Versão | 0.6 |
 | Status | Em uso |
-| Atualizado em | 2026-11-24 |
+| Atualizado em | 2026-11-28 |
 
 ## Documentos do projeto
 
@@ -29,7 +29,7 @@ Documento de entrada do projeto. Ele descreve o produto, a forma de trabalhar e 
 
 A documentação manda. O código obedece.
 
-O console em `src/` foi um ensaio feito antes da engenharia. Ele serviu para aprender modelagem e Java. Ele não é a especificação e não é a arquitetura do produto. Na S05 ele recebe a tag `console-estudo` e sai da `main`, e o projeto Spring Boot começa do zero, seguindo esta documentação. O caminho inverso não vale: achar um comportamento no console e escrever o requisito em cima dele.
+O console em `src/` foi um ensaio feito antes da engenharia. Ele serviu para aprender modelagem e Java. Ele não é a especificação e não é a arquitetura do produto. Em 25/11 ele recebeu a tag `console-estudo` e saiu da `main`, e o projeto Spring Boot começou do zero em `backend/`, seguindo esta documentação. O caminho inverso não vale: achar um comportamento no console e escrever o requisito em cima dele.
 
 Ordem de trabalho:
 
@@ -126,13 +126,14 @@ Decisões e motivos em [Tech Stack](tech-stack.md).
 
 ## Status atual
 
-Data de referência: 25/11/2026. Sprint S05. Fase atual: Back-end. A engenharia terminou antes do previsto, e o cronograma foi antecipado em 2 semanas.
+Data de referência: 28/11/2026. Sprint S05. Fase atual: Back-end. A engenharia terminou antes do previsto, e o cronograma foi antecipado em 2 semanas.
 
 | Entrega | Situação |
 | --- | --- |
 | Tema, repositório e entrada no Acelera Hub | Feito (S01) |
 | Tech stack | Feito (S02). Revisada em 24/11 com versões, ferramentas e decisões |
-| Console em Java | Ensaio de aprendizado. Sai da `main` na S05 |
+| Console em Java | Ensaio de aprendizado. Arquivado na tag `console-estudo` (25/11) |
+| Projeto Spring Boot | Criado em `backend/` (25/11), com PostgreSQL local, profiles e Flyway |
 | Protótipos navegáveis (HTML, `prototipos/`) | Feito |
 | Requisitos | Versão 0.3, 51 RF com prioridade e sprint |
 | Diagrama de fluxo | v2 no draw.io (24/11) |
@@ -147,7 +148,7 @@ Data de referência: 25/11/2026. Sprint S05. Fase atual: Back-end. A engenharia 
 
 ## Próximo passo
 
-A engenharia está concluída, e o ambiente está pronto (JDK 21, PostgreSQL 17, Postman e VS Code com o Extension Pack for Java). A S05 começou em 25/11: arquivar o console e criar o projeto Spring Boot em `backend/`. As contas no Railway e no Cloudflare ficam para a S09 e a S10.
+A engenharia está concluída, e o ambiente está pronto (JDK 21, PostgreSQL 17, Postman e VS Code com o Extension Pack for Java). A S05 começou em 25/11. O console já foi arquivado e o projeto Spring Boot está em `backend/`, testado contra o banco `orion_test`. Agora: Swagger, erros globais e `/health`, depois a API de Atributos. As contas no Railway e no Cloudflare ficam para a S09 e a S10.
 
 ## Histórico
 

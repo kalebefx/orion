@@ -1,6 +1,6 @@
 # CLAUDE.md — Projeto Orion
 
-Contexto do projeto para qualquer sessão de desenvolvimento. Atualizado em 24/11/2026.
+Contexto do projeto para qualquer sessão de desenvolvimento. Atualizado em 28/11/2026.
 
 ---
 
@@ -34,7 +34,7 @@ Fora da v1.0.0: aba de IA (decidido em 24/11), painel admin, compartilhamento, c
 | `documentacao-inicial.md` | Visão geral, escopo, telas, status |
 | `requisitos.md` | RF01–RF51 com prioridade MoSCoW e sprint de back e front. RNF01–RNF11 com forma de verificação |
 | `regras-de-negocio.md` | RN01–RN37, todas validadas em 24/11 |
-| `cronograma.md` | v2.0: 17 sprints, marcos e tags |
+| `cronograma.md` | v3.0: 17 sprints, previsão em 22/02/2027 e prazo final em 08/03/2027 |
 | `processo.md` | Scrum adaptado, Trello, DoR, DoD, Git, versões, ambientes, CI/CD, testes |
 | `api.md` | Contrato REST `/api/v1`, erros em Problem Details. Validado em 25/11 |
 | `tech-stack.md` | Ferramentas, motivos e registro de decisões |
@@ -59,34 +59,38 @@ Ambiente na máquina (25/11): JDK 21 (Temurin) e Java 26, Maven 3.9, Node 24, gi
 
 ## Estrutura do repositório
 
-Hoje:
+Monorepo:
 
 ```
 orion/
-├── CLAUDE.md, README.md (mínimo), .gitignore
-├── .vscode/settings.json
+├── CLAUDE.md, README.md, .gitignore
+├── backend/                 ← Spring Boot 4.2 + Java 21 (Maven Wrapper)
+│   ├── src/main/java/com/kalebe/orion/
+│   │   └── config, controller, service, repository, domain, dto, exception
+│   ├── src/main/resources/  ← application.yml (+ -dev, -prod), db/migration (Flyway)
+│   ├── src/test/            ← testes (profile test, banco orion_test)
+│   └── .env.example         ← modelo do .env (o .env fica fora do Git)
+├── prototipos/              ← protótipos navegáveis das telas (HTML)
 ├── docs/                    ← ver tabela acima
-├── src/com/kalebe/orion/    ← console de estudo (model, service, ui)
-└── bin/                     ← compilado, fora do Git (está no .gitignore)
+├── frontend/                ← React (a partir da S10)
+└── .github/workflows/ci.yml ← CI (card da S05, ainda não criado)
 ```
 
-Planejada (monorepo, a partir da S05):
-
-```
-orion/
-├── backend/   ← Spring Boot (S05). Pacotes: config, controller, service, repository, domain, dto, exception
-├── frontend/  ← React (S10)
-├── docs/
-└── .github/workflows/ci.yml
-```
-
-Na S05, o console recebe a tag `console-estudo` e `src/`, `bin/` e `.vscode/` saem da `main`.
+O console de estudo foi arquivado na tag `console-estudo` (25/11). Ele não é a base do produto e não deve ser corrigido.
 
 ---
 
-## O console em `src/` (ensaio, não é a base do produto)
+## Como rodar o back-end
 
-Dados só em memória. Fluxo: `Menu → OrionService → XService → model`. Não corrigir. Bugs conhecidos: excluir bloco não tira o bloco da Semana; `limparTela()` apaga a saída; `toString` padrão em Atributo e Hábito; entrada inválida derruba o programa.
+Pré-requisitos: PostgreSQL 17 rodando, bancos `orion` e `orion_test` criados e `backend/.env` preenchido a partir do `.env.example`. Use o JDK 21 (`JAVA_HOME` apontando para o Temurin 21).
+
+```powershell
+cd backend
+.\mvnw.cmd verify            # build + testes
+.\mvnw.cmd spring-boot:run   # sobe a API em http://localhost:8080/api/v1 (profile dev)
+```
+
+A segurança está liberada (`config/SecurityConfig`) até a S06, quando entra o JWT.
 
 ---
 
@@ -150,12 +154,13 @@ A engenharia terminou antes. A S05 começou em 25/11, e as sprints seguintes for
 - Proteção da `main` no GitHub (S05, junto com o CI)
 
 ### S05 em andamento (25/11–29/11)
-- [ ] Tag `console-estudo` e remover o console da `main`
-- [ ] Projeto Spring Boot em `backend/`
-- [ ] PostgreSQL local (`orion` e `orion_test`), profiles e Flyway
-- [ ] CI no GitHub Actions e proteção da `main`
-- [ ] Swagger, erros globais e `/health`
+- [x] Tag `console-estudo` e console removido da `main` (25/11)
+- [x] Projeto Spring Boot 4.2 em `backend/` (25/11)
+- [x] PostgreSQL local (`orion` e `orion_test`), profiles e Flyway configurado (25/11). A primeira migration entra com a API de Atributos
+- [x] Protótipos navegáveis em `prototipos/` (27/11)
+- [ ] Swagger, erros globais e `/health` (em andamento)
 - [ ] API de Atributos
+- [ ] CI no GitHub Actions e proteção da `main` (adiados por decisão do Kalebe)
 
 ---
 

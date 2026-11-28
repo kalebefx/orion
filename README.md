@@ -25,4 +25,16 @@ Projeto de portfólio desenvolvido no Acelera Hub, do console ao fullstack.
 | [Tech Stack](docs/tech-stack.md) | Ferramentas e decisões |
 | [Diagramas](docs/diagramas/) | Fluxo, classes e modelo de dados |
 
-O código em `src/` é um ensaio de aprendizado em Java de console. Ele será arquivado com a tag `console-estudo` na S05.
+## Como rodar o back-end
+
+Pré-requisitos: JDK 21, PostgreSQL 17 com os bancos `orion` e `orion_test`, e o arquivo `backend/.env` preenchido a partir de `backend/.env.example`.
+
+```bash
+cd backend
+./mvnw verify            # build e testes
+./mvnw spring-boot:run   # API em http://localhost:8080/api/v1
+```
+
+Os protótipos das telas estão em [`prototipos/`](prototipos/) e abrem direto no navegador.
+
+O projeto começou como um console em Java para estudo, arquivado na tag `console-estudo`.

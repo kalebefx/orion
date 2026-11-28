@@ -105,7 +105,7 @@ Versionamento semântico, com tags no GitHub e notas de release:
 
 | Ambiente | Back-end | Banco | Front-end | Deploy |
 | --- | --- | --- | --- | --- |
-| Local (`dev`) | `mvn spring-boot:run` | PostgreSQL 17 instalado no Windows (banco `orion`) | `npm run dev` | — |
+| Local (`dev`) | `.\mvnw.cmd spring-boot:run` (em `backend/`) | PostgreSQL 17 instalado no Windows (banco `orion`) | `npm run dev` | — |
 | Produção (`prod`) | Railway | PostgreSQL do Railway | Cloudflare Pages | Automático a cada merge na `main` |
 
 - **CI (GitHub Actions):** em todo push e PR, roda o build e os testes do back e, a partir da S10, o build e o lint do front. PR com CI vermelho não entra.
