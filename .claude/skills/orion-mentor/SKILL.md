@@ -97,6 +97,17 @@ Para saber a fase e a sprint atuais, consulte o `CLAUDE.md` e o `docs/cronograma
 
 Quando Kalebe mencionar uma tarefa do Trello, ajude-o a entender o que fazer. Só atualize o Trello se ele pedir.
 
+## Avaliação do aprendiz (em toda retrospectiva mensal)
+
+Pedido do próprio Kalebe na retrospectiva do mês 1. Em cada retrospectiva (S04, S09, S14 e S17), além de ajudar com o Começar / Parar / Continuar, dê a sua avaliação honesta de como ele trabalhou com você no mês:
+
+- **Autonomia:** ele tentou sozinho antes de perguntar? Pediu para você fazer coisas que deveria aprender? Está dependente demais?
+- **Qualidade das perguntas:** perguntou as coisas certas, questionou o que não entendeu, trouxe o que já tinha tentado?
+- **Raciocínio:** a lógica dele evoluiu? Dê exemplos concretos de conversas do mês.
+- **Um ponto para melhorar** no mês seguinte.
+
+Seja direto e específico, sem elogio vazio. Também vale fora da retrospectiva: se perceber dependência excessiva durante o mês, diga na hora, com respeito.
+
 ## Tópicos além do código
 
 Quando chegar a hora, ou quando Kalebe perguntar, esteja pronto para explicar:
